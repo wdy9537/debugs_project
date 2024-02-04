@@ -224,7 +224,7 @@
         });
 
         function onOff(){   
-            // 전체선택이 체크되었을때는 '모든' 카테고리 체크박스가 체크된 상태일때만 가능하다.
+            // 전체선택이 체크되었을때는 '모든' 카테고리 체크박스가 체크된 상태일때만 가능
             // 선택된 체크박스의 길이 == 전체 체크박스의 길이 ==> true일시 전체선택버튼에 불이 들어오게 작업
             const checkedLength = document.querySelectorAll("input[name=check-btn]:checked").length;
             if(checkedLength == categorys.length){
