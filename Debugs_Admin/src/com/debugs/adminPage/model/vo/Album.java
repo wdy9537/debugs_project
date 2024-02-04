@@ -7,7 +7,7 @@ public class Album {
 	private String albumPic;
 	private String albumType;
 	private String albumDate;
-	private int artistNo; // String으로 해야할까?
+	private int artistNo;
 	private String albumChangeName;
 	private String albumPicPath;
 	private String artistName;
