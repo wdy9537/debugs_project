@@ -325,7 +325,6 @@
     				}
     			}
     			
-    			/* $("#loadAlbumTitle").val(result.albumTitle); */
     		},
     		complete : function(){
     			loadTime(document.querySelector("#loadMusicTime"));
