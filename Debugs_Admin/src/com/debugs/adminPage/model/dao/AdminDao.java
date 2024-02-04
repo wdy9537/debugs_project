@@ -50,7 +50,6 @@ public class AdminDao {
 //--------------------------동연 시작--------------------------------
 	public Admin loginAdmin(Connection conn, String adminId, String adminPwd) {
 
-		// Select문 실행예정 => ResultSet객체에 담아줘야 한다.
 		Admin a = null;
 
 		PreparedStatement pstmt = null;
