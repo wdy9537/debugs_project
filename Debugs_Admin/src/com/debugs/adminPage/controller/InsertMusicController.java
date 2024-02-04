@@ -53,8 +53,6 @@ public class InsertMusicController extends HttpServlet {
 		if (ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 10 * 1024 * 1024;
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/songs/");
-//			String savePath = "Z:/songs/";
-			// 일단은 현재 아래의 리소스에 넣어놓고 마운트 해보자
 
 			MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF-8",
 					new MyFileRenamePolicy());
@@ -65,8 +63,8 @@ public class InsertMusicController extends HttpServlet {
 			String musicTimeM = multi.getParameter("musicTimeM");
 			String musicTimeS = multi.getParameter("musicTimeS");
 			String musicGenre = multi.getParameter("musicGenre");
-			String musicDetail = multi.getParameter("musicDetail"); // null
-			String musicLyrics = multi.getParameter("musicLyrics"); // null
+			String musicDetail = multi.getParameter("musicDetail");
+			String musicLyrics = multi.getParameter("musicLyrics");
 			String musicTime = musicTimeM + ":" + musicTimeS;
 
 			int albumNo = new AdminService().selectAlbumNo(albumTitle);
