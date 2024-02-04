@@ -90,15 +90,12 @@ public class UpdateMusicController extends HttpServlet {
 				album.setAlbumChangeName(multi1.getFilesystemName("upAlbumPic"));
 			}
 
-//			album.setAlbumChangeName(multi1.getFilesystemName("albumPic"));
 			album.setAlbumPicPath("/resources/img/album_pic/");
 
 			int result1 = new AdminService().updateAlbum(album);
 
 //			------------------------음원업-----------------------------------------------
 			String saveMusicPath = request.getSession().getServletContext().getRealPath("/resources/songs/");
-			// MultipartRequest multi1 = new MultipartRequest(request, saveMusicPath,
-			// maxSize, "UTF-8", new MyFileRenamePolicy());
 
 			int musicNo = Integer.parseInt(multi1.getParameter("musicNo"));
 			int albumNo2 = Integer.parseInt(multi1.getParameter("albumNo"));
