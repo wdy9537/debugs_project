@@ -308,11 +308,6 @@
    		WHERE QNA_NO=?
    </entry>
    
- <!--   <entry key="selectQnaImg">
-   		SELECT QNA_IMAGE_CHANGE "QNA_IMAGE"
-   		FROM QNA
-   		WHERE QNA_NO=?
-   </entry> -->
 <!-- 동연 끝 -->
 
 <!-- 동현 시작-->
