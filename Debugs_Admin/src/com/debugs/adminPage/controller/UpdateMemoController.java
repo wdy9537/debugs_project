@@ -58,11 +58,9 @@ public class UpdateMemoController extends HttpServlet {
 			loginAdmin.setAdminMemo(adminMemo);
 			session.setAttribute("loginAdmin", loginAdmin);
 			session.setAttribute("alertMsg", "메모 저장 성공");
-//			request.getRequestDispatcher("views/adminPage/adminMain.jsp").forward(request, response);
 			response.sendRedirect(request.getContextPath() + "/main.ad");
 		} else {
 			session.setAttribute("alertMsg", "메모 저장 실패");
-//			request.getRequestDispatcher("views/adminPage/adminMain.jsp").forward(request, response);
 			response.sendRedirect(request.getContextPath() + "/main.ad");
 		}
 
