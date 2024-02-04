@@ -441,10 +441,6 @@ public class AdminService {
 
 	public int deleteMusic(String[] musicNoList) {
 
-		// 뮤직 + 키워드 먼저 지우
-		// 아니면 그냥 롤백 0
-		// 성공하면 뮤직 지우기 이거도 성공하면 커밋 1
-
 		Connection conn = getConnection();
 		AdminDao adminDao = new AdminDao();
 
