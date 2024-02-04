@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+
+	<entry key="loginDebugs_User"> <!-- 로그인 -->
+		SELECT *
+		FROM DEBUG_USER
+		WHERE USER_ID = ?
+		  AND USER_PWD =?
+	</entry>
+	
+	<entry key="insertDebugs_User">  <!--회원가입 -->
+		INSERT INTO DEBUG_USER(
+							USER_NO,
+							USER_ID,
+							USER_PWD,
+							USER_NAME,
+							USER_SSN,
+							USER_EMAIL,
+							USER_PHONE
+							)
+		VALUES (
+				SEQ_DEBUG_USER.NEXTVAL,
+				?,
+				?,
+				?,
+				?,
+				?,
+				?
+				
+				)
+	</entry>
+
+	<entry key="updateDebugs_User"> <!--회원정보 수정 -->
+		UPDATE DEBUG_USER
+		SET USER_NAME = ? ,
+		    USER_PWD = ? ,
+		    USER_SSN = ? ,
+		    USER_PHONE = ? 
+		  WHERE USER_ID = ?
+	</entry>
+	
+
+	 <entry key="selectDebugs_Ticket"> <!--이용권 조회 -->
+		SELECT B.TICKET_NO
+             , B.TICKET_PER
+             , B.TICKET_NAME
+             , B.TICKET_PRICE
+             , B.TICKET_LOOP_PLAY
+             , B.TICKET_OFFLINE_PLAY
+		  FROM DEBUG_USER  A
+		     , TICKET       B
+		 WHERE A.USER_ID = ?
+		   AND A.TICKET_NAME  = B.TICKET_NAME
+	</entry>
+		
+	 <entry key="updateDebugs_User_ticket_cancel"> <!--이용권 해지 -->
+		UPDATE DEBUG_USER
+		SET TICKET_NAME = '' ,
+		    TICKET_DATE = ''  
+		  WHERE USER_ID = ?
+	</entry>
+	
+	
+	<entry key="selectDebugs_User">
+		SELECT *
+		  FROM DEBUG_USER
+		 WHERE USER_ID = ?
+	</entry>
+	
+	 <entry key="findUserIDDebugs_User"> <!--아이디 찾기 -->
+		SELECT *
+		  FROM DEBUG_USER
+		 WHERE USER_NAME = ?
+		   AND USER_EMAIL = ?
+	</entry>
+	
+	<entry key="findUserPWDDebugs_User"> <!--비밀번호 찾기 -->
+		SELECT *
+		  FROM DEBUG_USER
+		 WHERE USER_ID = ?
+		   AND USER_EMAIL = ?
+	</entry>
+	
+	<entry key="deleteDebugs_User"> <!--회원탈퇴 -->
+		DELETE DEBUG_USER  
+		 WHERE USER_ID = ? 
+		   AND USER_PWD = ?
+	</entry>
+	
+	
+    <entry key="pwdCheck"> <!--비밀번호 확인 -->
+	      SELECT COUNT(*)
+	        FROM DEBUG_USER 
+	       WHERE USER_ID = ? 
+		     AND USER_PWD = ?
+	   </entry>
+	
+	   <entry key="idCheck"> <!--아이디 중복 확인 -->
+	      SELECT COUNT(*)
+	        FROM DEBUG_USER 
+	       WHERE USER_ID = ?
+	   </entry>
+	    
+	    <entry key="phoneCheck"> <!--휴대폰 번호 확인 -->
+	      SELECT COUNT(*)
+	      FROM DEBUG_USER 
+	      WHERE USER_PHONE = ?
+	   </entry>
+	
+	 <entry key="pwdupdateDebugs_User"> <!-- 비밀번호 변경 -->
+		UPDATE DEBUG_USER
+		SET USER_PWD = ? 		   
+		  WHERE USER_ID = ?
+	</entry>
+	
+	<entry key="searchMemberTicket">
+		SELECT TICKET_NAME, TICKET_LOOP_PLAY, TICKET_OFFLINE_PLAY, D.TICKET_DATE, USER_NAME
+		FROM TICKET T
+		JOIN DEBUG_USER D ON (D.TICKET_NO = T.TICKET_NO)
+		WHERE USER_ID = ?		
+	</entry>
+	
+</properties>

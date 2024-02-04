@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectTicketList">
+	SELECT 
+		TICKET_NO,
+		TICKET_NAME,
+		TICKET_PRICE
+	FROM TICKET
+</entry>
+
+<entry key="updateBuyTicket">
+	UPDATE DEBUG_USER
+	SET TICKET_DATE = SYSDATE + (SELECT TO_NUMBER(TICKET_PER)
+                            FROM TICKET
+                            WHERE TICKET_NO=?)
+	WHERE USER_NO = ?
+</entry>
+
+<entry key="updateTicketNo">
+	UPDATE DEBUG_USER
+	SET TICKET_NO = ?
+	WHERE USER_NO = ?
+</entry>
+
+<entry key="selectDebugs_Ticket"> <!--이용권 조회 -->
+		SELECT B.TICKET_NO
+             , B.TICKET_PER
+             , B.TICKET_NAME
+             , B.TICKET_PRICE
+             , B.TICKET_LOOP_PLAY
+             , B.TICKET_OFFLINE_PLAY
+		  FROM DEBUG_USER  A
+		     , TICKET       B
+		 WHERE A.USER_ID = ?
+		   AND A.TICKET_NAME  = B.TICKET_NAME
+	</entry>
+		
+
+</properties>

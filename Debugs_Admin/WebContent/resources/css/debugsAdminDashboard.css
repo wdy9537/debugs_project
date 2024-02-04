@@ -1,0 +1,1498 @@
+    /* 노멀라이즈 시작 */
+    body,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      /* 해당 태그의 list-style을 none으로 하는 것으로 ●을 제거한다 */
+      box-sizing: border-box;
+    }
+
+    a {
+      color: inherit;
+      /* 부모 엘리먼트의 값을 물려받는다 */
+      text-decoration: none;
+      /* 해당 태그의 text-decoration 속성을 none 값으로 하는 것으로 밑줄을 제거한다 */
+    }
+
+    /* 노멀라이즈 끝 */
+
+    /* 커스텀 시작 */
+    .side-bar>ul ul {
+      display: none;
+    }
+
+    body {
+      background-color: #444;
+      overflow: hidden;
+    }
+
+    /* 헤더 시작*/
+    :root {
+      /** color **/
+      --baseColor: #333;
+      /** size **/
+      --baseContainer: 79.375rem;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: gray;
+    }
+
+    header img {
+      width: 215px;
+      padding: 0.55rem 1.75rem;
+    }
+
+    header>div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header nav ul {
+      display: flex;
+      text-align: center;
+      margin-right: 100px;
+      margin-left: -100px;
+    }
+
+    header nav ul li {
+      padding: 0 10px;
+      margin: 0 10px;
+      width: 100px;
+      background-color: #333;
+      color: aliceblue;
+      border-radius: 15px / 15px;
+    }
+
+    header nav ul li a {
+      position: relative;
+      display: inline-block;
+      line-height: 4rem;
+      font-weight: bold;
+      font-size: 1.0625rem;
+    }
+
+    /* header nav ul li.active a,
+    header nav ul li:hover a {
+      color: var(--blueColor);
+    } */
+
+    header nav ul li a:after {
+      opacity: 0;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      left: 0;
+      bottom: 0;
+      transition: all 0.3s ease-in-out;
+    }
+
+    header nav ul li.active a:after,
+    header nav ul li:hover a:after {
+      opacity: 1;
+    }
+
+    header div span {
+      font-size: 50px;
+      font-weight: 900;
+    }
+
+    /* 헤더 끝*/
+
+    /* 사이드바 시작 */
+    /* 사이드바의 너비와 높이를 변수를 통해 통제 */
+    :root {
+      --side-bar-width: 270px;
+      --side-bar-height: 90vh;
+    }
+
+    .side-bar {
+      position: fixed;
+      /* 스크롤을 따라오도록 지정 */
+      background-color: rgba(0, 0, 0, 0.39);
+      width: var(--side-bar-width);
+      min-height: 100%;
+    }
+
+    /* 아이콘 시작 */
+    .side-bar__icon-box {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .side-bar__icon-1 {
+      position: relative;
+      width: 23px;
+      height: 17px;
+      margin: 15px;
+      margin-top: 40px;
+      transition: .5s;
+    }
+
+    :root {
+      --side-bar__icon: .5s;
+    }
+
+    .side-bar__icon-1>div {
+      position: absolute;
+      width: 100%;
+      height: 20%;
+      background-color: white;
+      transition: all var(--side-bar__icon);
+    }
+
+    .side-bar__icon-1>div:nth-of-type(1) {
+      top: 0;
+      width: auto;
+      left: 0;
+      right: 0;
+      transition: all var(--side-bar__icon), left calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2), right calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2), height calc(var(--side-bar__icon) / 2) 0s;
+    }
+
+    .side-bar__icon-1>div:nth-of-type(2) {
+      top: 40%;
+      transform-origin: bottom left;
+    }
+
+    .side-bar__icon-1>div:nth-of-type(3) {
+      top: 80%;
+      left: auto;
+      right: 0;
+      transform-origin: bottom right;
+    }
+
+    .side-bar:hover .side-bar__icon-1>div:nth-of-type(2) {
+      transform: rotate(45deg);
+      width: 70.5%;
+      height: 25%;
+    }
+
+    .side-bar:hover .side-bar__icon-1>div:nth-of-type(3) {
+      top: 40%;
+      transform: rotate(-45deg);
+      width: 70.5%;
+      height: 25%;
+    }
+
+    .side-bar:hover .side-bar__icon-1>div:nth-of-type(1) {
+      left: 41%;
+      right: 41%;
+      height: 100%;
+      transition: all var(--side-bar__icon), left calc(var(--side-bar__icon) / 2) 0s, right calc(var(--side-bar__icon) / 2) 0s, height calc(var(--side-bar__icon) / 2) calc(var(--side-bar__icon) / 2);
+    }
+
+    .side-section {
+      width: 14.2%;
+      height: 100%;
+    }
+
+    /* 아이콘 끝 */
+
+    /* 모든 메뉴의 a에 속성값 부여 */
+    .side-bar ul>li>a {
+      display: block;
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 50px;
+      transition: .5s;
+    }
+
+    /* 자식의 position이 absolute일 때 자식을 영역 안에 가두어 준다 */
+    .side-bar>ul>li {
+      position: relative;
+    }
+
+    /* 모든 메뉴가 마우스 인식 시 반응 */
+    .side-bar ul>li:hover>a {
+      background-color: #555;
+      border-bottom: 1px solid #999;
+    }
+
+    /* 1차 메뉴의 항목이 마우스 인식 시에 2차 메뉴 등장 */
+    .side-bar>ul>li:hover>ul {
+      display: block;
+      position: absolute;
+      background-color: #888;
+      top: 0;
+      /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
+      left: 100%;
+      /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
+      width: 100%;
+      /* 1차 메뉴의 너비를 상속 */
+    }
+
+    /* 사이드바 너비의 80%만큼 왼쪽으로 이동 */
+    .side-bar {
+      transition: .5s;
+    }
+
+    /* 사이드바 끝 */
+
+    /* 메인 시작 */
+    main {
+      height: 820px;
+    }
+
+    .main-section {
+      width: 86.8%;
+      height: 100%;
+      background-color: white;
+    }
+
+    /* .main-section>div{border: 1px solid red;} */
+
+    body::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, Opera*/
+    }
+
+    #main-container {
+      display: flex;
+    }
+
+    .main-content {
+      width: 90%;
+      height: 70%;
+      margin: auto;
+      /* margin-top: 100px; */
+    }
+
+    .main-title,
+    .main-btn {
+      width: 90%;
+      margin: auto;
+    }
+
+    .main-title {
+      margin-top: 70px;
+    }
+
+    .main-btn {
+      height: 35px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .main-btn>button {
+      margin-right: 30px;
+      font-size: 15px;
+    }
+
+    .main-btn button {
+      border-radius: 10px 10px;
+      background-color: #333;
+      color: aliceblue;
+      width: 150px;
+    }
+
+    .main-btn button>div {
+      height: -webkit-fill-available;
+      line-height: 31px;
+    }
+    
+    .main-btn button>div:hover {
+      border-bottom: 2px solid white;
+      cursor: pointer;
+    }
+    
+    .count-select-music{
+      font-size: 30px;
+      margin-right: 1027px;
+    }
+    
+    .music-insert-btn{
+      display: flex;
+      justify-content: center;
+    }
+
+    .music-insert-btn>button{
+      width: 200px;
+      height: 40px;
+      border-radius: 10px 10px;
+      background-color: #333;
+      color: aliceblue;
+      font-size: 15px;
+    }
+
+    .main-content-insertTable{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: -20px;
+    }
+    .main-content-insertTable td{
+        border: none;
+    }
+    .main-content-insertTable th{
+        width: 150px;
+        background-color: white;
+        border: none;
+        text-align: left;
+    }
+    
+    .main-content-insertTable input{
+        width: 420px;
+        height: 30px;
+    }
+    .main-content-insertTable textarea{
+        width: 420px;
+        height: 200px;
+        resize: none;
+        margin-top: 10px;
+    }
+    .main-content-insertTable tr{
+        height: 49px;
+    }
+
+    .main-content-insertTable tr:last-child th{
+        vertical-align : top;
+        padding-top: 10px;
+    }
+
+    #insertFaq select{
+      width: 200px;
+      height: 40px;
+    }
+
+    #insertFaq textarea, #insertqna textarea{
+      width: 420px;
+      height: 150px;
+      resize: none;
+      margin-top: -5px;
+    }
+
+    .mainPageUp{
+      height: 250px;
+      display: flex;
+      justify-content: left;
+    }
+    .mainPageDown{
+      height: 50%;
+    }
+
+    .mainPageDown h2{
+      margin-top: 0px;
+      margin-left: -75px;
+    }
+
+    .adminInf{
+      width: 400px;
+      height: 250px;
+    }
+
+    .adminMemo{
+      width: 900px;
+      margin-left: 140px;
+      height: 250px;
+    }
+
+    .adminMemo table tr, .adminMemo table tr th, .adminMemo table tr td{
+      width: 900px;
+      border: none;
+    }
+
+    .adminMemo table tr th, .adminInf table tr th{
+      height: 50px;
+      font-size: 25px;
+    }
+
+    .adminMemo table tr td{
+      height: 200px;
+    }
+
+    .adminMemo table tr td textarea{
+      width: 100%;
+      height: 100%;
+      resize: none;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    .adminInf table tr, .adminInf table tr th{
+      width: 400px;
+    }
+
+    .adminInf table tr td{
+      width: 50%;
+      height: 46px;
+      background-color: white;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .adminInf table tr td:first-child{
+      border-right: 1px solid gray;
+    }
+
+    .adminMemo-btn{
+      border-radius: 10px 10px;
+      background-color: #333;
+      color: aliceblue;
+      width: 100px;
+      font-size: 15px;
+      height: 35px;
+      margin-right: 10px;
+    }
+
+    .adminMemo-btn:hover, .music-insert-btn button:hover{
+      color: black;
+      cursor: pointer;
+      background-color: lightgray;
+      border: none;
+    }
+
+    .adminMemo table tr th:first-child{
+      width: 55%;
+    }
+
+    .adminMemo table tr th:last-child{
+      width: 45%;
+    }
+
+    .adminMemo table tr th{
+      text-align: right;
+    }
+
+    /* 테이블 시작 */
+    table {
+      text-align: center;
+      border-collapse: collapse;
+    }
+
+    table th {
+      background: gray;
+    }
+
+    table>thead {
+      font-size: 25px;
+    }
+
+    table>tbody {
+      font-size: 20px;
+    }
+
+    table>tbody tr {
+      height: 43px;
+    }
+
+    #main-container th,
+    #main-container td {
+      border-bottom: 1px solid gray;
+    }
+
+    input[type='checkbox'] {
+      zoom: 1.5;
+    }
+
+
+    /* 테이블 끝 */
+
+    /* 페이징시작 */
+    .main-pagingbar>button {
+      width: 40px;
+      height: 40px;
+      margin: 0px 5px 0px 5px;
+    }
+
+    .main-pagingbar {
+      display: flex;
+      justify-content: center;
+    }
+
+    .main-pagingbar>button:hover {
+      cursor: pointer;
+      background-color: gray;
+      border: none;
+    }
+
+    /* 페이징 끝 */
+
+    
+    /* 동현 시작  */
+
+    /* 공지사항 css */
+/* 공지사항 등록 모달창 시작 */
+.notice-enroll-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.notice-enroll-modal.show {
+  display: block;
+}
+
+.notice-enroll-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 720px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#notice-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 87.5%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#motice-modal-table{
+  width: 100%;
+  font-size: 22px;
+}
+
+#motice-modal-table textarea {
+  resize:none;
+}
+
+#motice-modal-table input{
+  width: 250px;
+  height: 23px;
+}
+
+#motice-modal-table td {
+  height: 35px;
+  border : none;
+}
+
+#motice-modal-table th {
+  text-align: left;
+  background-color: lightgray;
+  font-weight: 500;
+  border: none;
+}
+
+#motice-modal-table select {
+  background-color: white;
+  width: 150px;
+  height: 30px;
+}
+
+#selectOption {
+  text-align: right;
+}
+
+#motice-enroll {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 공지사항 삭제 모달창 시작 */
+.notice-delete-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.notice-delete-modal.show {
+  display: block;
+}
+
+.notice-delete-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 100px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#notice-delete-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 68%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#motice-delete {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 제출, 삭제 버튼 */
+#motice-enroll, #motice-delete {
+  cursor: pointer;
+  border : none;
+}
+
+#motice-enroll:hover, #motice-delete:hover {
+  background-color: #888;
+}
+
+#notice-category-option {
+  width: 150px;
+  height: 30px;
+}
+
+/* 블랙리스트 css */
+/* 블랙리스트 등록 모달창 시작 */
+.enroll-blacklist-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.enroll-blacklist-modal.show {
+  display: block;
+}
+
+.enroll-blacklist-body-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 300px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#blacklist-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 69.5%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#enroll-blacklist-modal-table{
+  text-align: right;
+  width: 100%;
+  font-size: 22px;
+}
+
+#enroll-blacklist-modal-table input{
+  width: 250px;
+  height: 23px;
+}
+
+#enroll-blacklist-modal-table td {
+  height: 35px;
+}
+
+#blacklist-enroll {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 블랙리스트 삭제 모달창 시작 */
+.blacklist-delete-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.blacklist-delete-modal.show {
+  display: block;
+}
+
+.blacklist-delete-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 100px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#delete-blacklist-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 68%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#blacklist-delete {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 제출, 삭제 버튼 */
+#blacklist-delete, #blacklist-enroll {
+  cursor: pointer;
+  border : none;
+}
+
+#blacklist-delete:hover, #blacklist-enroll:hover {
+  background-color: #888;
+}
+
+#blacklist-reason {
+  width: 255px;
+  height: 30px;
+}
+
+.search-member {
+width: 90%;
+display: block;
+font-weight: bold;
+font-size: large;
+}
+
+.search-member input {
+height: 20px;
+}
+
+.search-member button {
+cursor: pointer;
+}
+
+/* 이용권 관리 css */
+/* 이용권 등록 모달창 시작 */
+.ticket-enroll-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ticket-enroll-modal.show {
+  display: block;
+}
+
+.ticket-enroll-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 300px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#ticket-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 85.7%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#ticket-modal-table{
+  width: 100%;
+  font-size: 22px;
+}
+
+#ticket-modal-table textarea {
+  resize:none;
+}
+
+#ticket-modal-table input[type=text]{
+  width: 240px;
+  height: 23px;
+}
+
+#ticket-modal-table input[type=radio]{
+  width: 70px;
+  height: 15px;
+}
+
+#ticket-modal-table td {
+  height: 35px;
+  border : none;
+}
+
+#ticket-modal-table th {
+  text-align: left;
+  background-color: lightgray;
+  font-weight: 500;
+  border: none;
+}
+
+#ticket-modal-table select {
+  background-color: white;
+  width: 150px;
+  height: 30px;
+}
+
+#ticket-enroll {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 이용권 삭제 모달창 시작 */
+.ticket-delete-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ticket-delete-modal.show {
+  display: block;
+}
+
+.ticket-delete-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 100px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#ticket-delete-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 68%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#ticket-delete {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 제출, 삭제 버튼 */
+#ticket-enroll, #ticket-delete {
+  cursor: pointer;
+  border : none;
+}
+
+#ticket-enroll:hover, #ticket-delete:hover {
+  background-color: #888;
+}
+
+#ticket-category-option {
+  width: 150px;
+  height: 30px;
+}
+
+/* 일반 관리자 관리 css */
+/* 관리자 생성 모달창 시작 */
+.admin-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.admin-modal.show {
+  display: block;
+}
+
+.admin-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 350px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#admin-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 85.7%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#modal-table{
+  text-align: right;
+  width: 100%;
+  font-size: 22px;
+}
+
+#modal-table input{
+  width: 250px;
+  height: 23px;
+}
+
+#modal-table td {
+  height: 35px;
+}
+
+#admin-submit {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 관리자 삭제 모달창 시작 */
+.delete-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.delete-modal.show {
+  display: block;
+}
+
+.delete-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 400px;
+  height: 100px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#delete-admin-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 68%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#admin-remove {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 제출, 삭제 버튼 */
+#admin-remove, #admin-submit {
+  cursor: pointer;
+  border : none;
+}
+
+#admin-remove:hover, #admin-submit:hover {
+  background-color: #888;
+}
+
+/* 회원 관리 css */
+/* 회원 수정 모달창 시작 */
+.member-update-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.member-update-modal.show {
+  display: block;
+}
+
+.member-update-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 1400px;
+  height: 480px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#member-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 92%;
+  bottom : 85.7%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#member-modal-table{
+  text-align: left;
+  width: 100%;
+  font-size: 22px;
+}
+
+#member-modal-table input{
+  width: 250px;
+  height: 23px;
+}
+
+#member-modal-table td {
+  height: 35px;
+}
+
+#member-update {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 회원 삭제 모달창 시작 */
+.member-delete-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.member-delete-modal.show {
+  display: block;
+}
+
+.member-delete-modal-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 300px;
+  height: 100px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#delete-member-out {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  position: absolute;
+  left : 87%;
+  bottom : 68%;
+  cursor: pointer;
+  font-size: 25px;
+  border: none;
+}
+
+#member-remove {
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+}
+
+/* 제출, 삭제 버튼 */
+#member-remove, #member-update {
+  cursor: pointer;
+  border : none;
+}
+
+#member-remove:hover, #member-update:hover {
+  background-color: #888;
+}
+
+/* 모달창 안에 테이블 */
+.member-info {
+  width: 1100px;
+  text-align: center;
+  border-collapse: collapse;
+  height: 80px;
+}
+
+.member-info th{
+  background-color: #666;
+  color : white;
+  font-weight: lighter;
+  height: 50px;
+}
+
+.member-info td{
+  background-color: #999;
+  color : white;
+  font-weight: lighter;
+}
+
+#ticket-option {
+  width: 260px;
+  height: 30px;
+}
+
+/* 수정한 부분 */
+.search-member {
+width: 90%;
+display: block;
+font-weight: bold;
+font-size: large;
+}
+
+.search-member input {
+height: 20px;
+}
+
+.search-member button {
+cursor: pointer;
+}
+
+/* 로그인 css */
+.loginheader {
+      width: 100%;
+      height: 150px;
+      background-color: lightgray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .loginheader img {
+      width: 250px;
+  }
+
+  .login-outer{
+      width: 1900px;
+      height: 740px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .login-form {
+      width: 400px;
+      height: 430px;
+      background-color: lightgray;
+      border-radius: 10px;
+  }
+
+  .login-table td{
+      text-align: center;
+      font-size: larger;
+      font-weight: bolder;
+      width: 400px;
+      height: 50px;
+  }
+
+  .login-table thead {
+      font-size: 25px;
+      height: 100px;
+      text-align: center;
+  }
+
+  .login-table input {
+      height: 30px;
+      width: 300px;
+      border-radius: 5px;
+      border: none;
+  }
+
+  .login-table button {
+      width: 200px;
+      height: 40px;
+      border-radius: 10px;
+      border : none;
+      background-color: #666;
+      color : white;
+      cursor: pointer;
+      margin-top: 30px;
+  }
+
+  .login-table button:hover {
+      background-color: #333;
+  }
+
+  /* 검색버튼 */
+  .search-member-submit:hover{
+    background-color: lightgray;
+    color: black;
+    border: none;
+  }
+
+  .enroll-blacklist-modal-table tr, .enroll-blacklist-modal-table th, .enroll-blacklist-modal-table td{
+    border: none;
+  }
+  
+  /* 추가 */
+  #insertMusic tr, #insertMusic th, #insertMusic td{
+    border: none;
+  }
+
+  .modal-body button:hover{
+    color: black;
+    cursor: pointer;
+    background-color: gray;
+    border: none;
+  }
+
+  #faq-modal-category{
+    display: flex;
+    justify-content: end;
+    height: 45px;
+  }
+
+  #qna-category{
+    background-color: white;
+    border: 1px solid gray;
+    width: 200px;
+    height: 100%;
+    line-height: 43px;
+    text-align: end;
+  }
+
+  #qna-content{
+    background-color: white;
+    border: 1px solid gray;
+    width: 420px;
+    height: 150px;
+    text-align: left;
+  }
+
+  .member-info {
+      width: 1400px;
+    }
+    
+/*     추가 */
+
+    .main-btn>form{
+      display: flex;
+      height: 100%;
+      width: -webkit-fill-available;
+    }
+
+    .searchMusic>input{
+      height: -webkit-fill-available;
+      width: 330px;
+      border-radius: 10px 10px;
+    }
+
+    #searchMusicBtn{
+      width: 50px;
+      margin-left: 10px;
+      font-size: 15px;
+    }
+
+    .main-btn>span{
+      height: 100%;
+    }
+
+    .searchMusic>input:hover{
+      cursor: pointer;
+    }
+
+    #searchMusicBtn:hover{
+      cursor: pointer;
+      background-color: gray;
+      border: none;
+    }

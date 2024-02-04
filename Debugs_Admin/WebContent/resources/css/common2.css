@@ -1,0 +1,42 @@
+/* 공통 */
+html,body {
+    font-family: 'Noto Sans KR', sans-serif;
+    position: relative;
+    height: 100%;
+    margin: 0;
+}
+.outer { 
+    width:1000px; margin:auto; padding-bottom: 80px;
+}
+
+/* 글자관련 css */
+.title_name{
+    font-size: 24px;
+    font-weight: 900;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.middle_title_name{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.success_msg{
+	width: 250px;
+    position: fixed;
+    top: 50%;
+    transform:translateX(-50%);
+    left: 50%;
+    z-index: 7;
+    background-color: black;
+    padding: 14px;
+    color: white;
+    text-align: center;
+    display: none;
+}
+
+
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectMusicList">
+		SELECT 
+			MUSIC_NO,
+			MUSIC_TITLE,
+			MUSIC_TIME,
+			MUSIC_GENRE,
+			MUSIC_LYRICS
+		FROM MUSIC 
+		WHERE MUSIC_NO = ?
+</entry>
+
+<entry key="selectArtistList">
+		SELECT 
+			AR.ARTIST_NAME
+		FROM ARTIST AR
+		LEFT JOIN ALBUM A ON (AR.ARTIST_NO=A.ARTIST_NO)
+		LEFT JOIN MUSIC M ON (A.ALBUM_NO=M.ALBUM_NO)
+		WHERE M.MUSIC_NO = ?
+</entry>
+<entry key="selectAlbumList">
+		SELECT 
+			A.ALBUM_TITLE, A.ALBUM_CHANGENAME
+		FROM ALBUM A
+		LEFT JOIN MUSIC M ON (A.ALBUM_NO=M.ALBUM_NO)
+		WHERE M.MUSIC_NO = ?
+</entry>
+<entry key="selectKeywordList">
+		SELECT 
+			K.KEYWORD_NAME
+		FROM KEYWORD K
+		LEFT JOIN MUSIC_KEYWORD MK ON (K.KEYWORD_NO = MK.KEYWORD_NO)
+		LEFT JOIN MUSIC M ON (MK.MUSIC_NO = M.MUSIC_NO)
+		WHERE M.MUSIC_NO = ?
+</entry>
+
+
+   <entry key="insertMusicLike">
+      INSERT INTO LIKE_MUSIC
+      VALUES(?,?)
+   </entry>
+   
+   <entry key="deleteMusicLike">
+      DELETE FROM LIKE_MUSIC
+      WHERE USER_NO = ? AND MUSIC_NO = ?
+   </entry>
+</properties>

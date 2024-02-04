@@ -1,0 +1,191 @@
+@charset "UTF-8";
+#wholeqnapage {
+            width: 1000px;
+            margin: auto;
+            margin-top: 50px;
+            transform: translate(-102px);
+        }
+
+        /* 메인 글씨 */
+        #clamemaintext {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            transform: translate(120px);
+        }
+
+        /* c/s 종류 버튼 */
+        .wholeclamemenu {
+            display: flex;
+            justify-content: center;
+            margin-left: 250px;
+            margin-bottom: 30px;
+
+
+        }
+
+
+        .clamemenu {
+            height: 50px;
+            width: 190px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 19px;
+            border-radius: 20px;
+            transition: transform 0.1s ease-in-out;
+            margin-bottom: 40px;
+            font-size: 20px;
+            font-weight: 900;
+            margin-top: 35px;
+
+        }
+
+        .clamemenu a {
+            text-decoration: none;
+            color: black;
+
+        }
+
+        .clamemenu a:hover {
+            color: #fa5d82;
+        }
+
+        #clamechoicemenu {
+            background-color: #fa5d82;
+        }
+
+        #clamechoicemenu a {
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        /* c/s 종류 버튼 끝*/
+
+
+
+
+
+
+        form {
+            margin-left: 100px;
+
+        }
+
+        /* 분류, 파일첨부 */
+        .clamekind {
+            width: 250px;
+            height: 38px;
+            display: flex;
+            border-radius: 5px;
+            border-color: #d6d6d6;
+            float: left;
+            cursor: pointer;
+
+        }
+
+        #upfile {
+            float: left;
+            position: absolute;
+            transform: translate(575px, 15px);
+            color: rgb(95, 95, 95);
+            font-size: 12px;
+
+        }
+
+        input[type=file]::file-selector-button {
+            border-radius: 50px;
+            border: 0px solid black;
+            font-size: 20px;
+            color: #f36e8d;
+            background-color: #ffffff;
+            cursor: pointer;
+            font-weight: 1000;
+        }
+
+        /* 분류 끝 */
+
+
+
+
+
+        /* 문의 내용 입력하는 곳*/
+
+        #qnaContent {
+            resize: none;
+            border-radius: 10px;
+            font-size: 18px;
+            border-color: #d6d6d6;
+            width: 1000px;
+            height: 250px;
+            padding-left: 15px;
+            padding-top: 15px;
+            margin-bottom: 30px;
+            margin-top: 15px;
+
+        }
+
+        #qnaContent::placeholder {
+            color: #a1a1a1;
+            font-size: 15px;
+            line-height: 1.5;
+            /* 행간을 조정하려면 원하는 값으로 변경하세요 */
+        }
+
+
+
+        /* 개인정보 제공 동의 */
+
+        pre {
+
+            display: block;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+
+            border: none;
+            background-color: transparent;
+            font-size: 14px;
+            line-height: 1.6;
+
+        }
+
+        #prespan {
+            font-size: 13px;
+            color: #8d8c8c;
+        }
+
+
+
+
+        /* 문의하기 버튼*/
+
+        #clamesumbit {
+            display: block;
+            margin: 0 auto;
+            margin-right: 290px;
+
+            height: 70px;
+            width: 200px;
+            background-color: #f36e8d;
+            border: 0px solid;
+            color: #ffffff;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            font-size: 23px;
+            font-weight: 900;
+            opacity: 70%;
+            cursor: pointer;
+        }
+
+        #clamesumbit:hover {
+
+            transform: scale(1.04);
+            /* 크기를 1.1배로 확대 */
+            background-color: #fc0f46;
+            color: white;
+            transition: transform 0.2s ease;
+        }

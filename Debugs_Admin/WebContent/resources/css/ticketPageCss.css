@@ -1,0 +1,93 @@
+@charset "UTF-8";
+#wholeticket {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+#debugsbuy {
+	margin-bottom: 70px;
+}
+
+#mainimg {
+	transform: scale(1.4);
+	margin-left: 200px;
+	border-radius: 20px;
+	box-shadow: 0 2px 4px rgba(158, 79, 79, 0.2);
+	margin-bottom: 30px;
+}
+
+#ticketbuy1 {
+	height: 50px;
+	width: 380px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0px;
+	border-radius: 20px;
+	transition: transform 0.1s ease-in-out;
+	margin-bottom: 40px;
+	font-size: 23px;
+	font-weight: 1000;
+	font-weight: 900;
+	background-color: #e41c4b;
+	border: 0px solid;
+	position: absolute;
+	transform: translate(305px, -55px);
+	color: #fafafa;
+	cursor: pointer;
+}
+
+/*이용권*/
+.ticket-table {
+	background-color: #fffbfb;
+	border-radius: 10px;
+	height: 120px;
+	width: 1000px;
+	border-collapse: collapse;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	margin: 20px;
+}
+.ticketNo{
+color:#fffbfb;
+}
+
+.ticket-name {
+	padding-left: 40px;
+	font-size: 26px;
+	font-weight: 500;
+	width: 500px;
+	height: 60px;
+	color: #f36e8d;
+	letter-spacing: -2px;
+}
+
+.ticket-price {
+	width: 360px;
+	font-size: 24px;
+	font-weight: 700;
+	padding-bottom: 13px;
+}
+
+.hrhr {
+	margin-right: 230px;
+	font-size: 39px;
+	font-weight: 100;
+	color: #a8a8a8;
+}
+
+.ticket-buy {
+	margin-right: 20px;
+	height: 45px;
+	width: 120px;
+	background-color: #f36e8d;
+	border: 0px solid;
+	color: #ffffff;
+	justify-content: center;
+	border-radius: 15px;
+	font-size: 18px;
+	font-weight: 900;
+	cursor: pointer;
+}

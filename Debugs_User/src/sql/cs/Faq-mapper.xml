@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+
+	<entry key="selectList">
+	SELECT *
+	FROM (
+	    SELECT ROWNUM RNUM , A.*
+	    FROM (
+			SELECT 
+				FAQ_NO,
+				CATEGORY_NAME, 
+				FAQ_TITLE
+			FROM FAQ 
+			JOIN CATEGORY ON (FAQ_CATEGORY = CATEGORY_NO)
+			ORDER BY FAQ_NO DESC
+		) A
+	)
+	WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		FROM FAQ
+	</entry>
+	
+	
+	<entry key="selectCategoryList">
+		SELECT CATEGORY_NO ,
+		       CATEGORY_NAME
+		FROM CATEGORY
+	</entry>
+	
+	
+	
+	<entry key="selectFaq">
+		SELECT FAQ_NO,
+				CATEGORY_NAME, 
+		       FAQ_TITLE,
+		       FAQ_CONTENT
+		FROM FAQ
+		JOIN CATEGORY ON (FAQ_CATEGORY = CATEGORY_NO)
+		WHERE FAQ_NO = ? 
+	</entry>
+	
+	
+	<entry key="selectFaqCategory">
+		SELECT 
+		FAQ_NO,
+			FAQ_CATEGORY, 
+			FAQ_TITLE
+		FROM FAQ 
+		WHERE FAQ_CATEGORY = ?
+	</entry>
+	
+	
+	
+</properties>

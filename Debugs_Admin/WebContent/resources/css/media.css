@@ -1,0 +1,1172 @@
+/* 공통 css */
+
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+button{
+    background-color: transparent;
+    border:none;
+}
+
+
+
+/* 공통 css 끝!  */
+/* 헤더 영역 */
+.slick-slide img {
+	border-radius:20px;
+}
+
+
+
+
+.header-top-wrap{
+    background-color: #faecec80;
+    padding: 8px 15px 20px 30px;
+}
+
+.header-right {
+display: flex;
+float: right;
+width: 20%;
+justify-content: space-between;
+margin-right: 5%;
+margin-top: 1%;
+}
+
+.header-right a {
+    font-size:small;
+    color:#65737e;
+    padding: 5px 5px;
+}
+/* 호버 굳이? 굳이구지구지 */
+.header-right a:hover{
+    background-color: rgb(255, 224, 224);
+    border-radius : 4px;
+}
+
+.header-right img {
+    height:22px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding-top:2%;
+    margin-left:3%;
+}
+
+.navbar_logo img {
+    height:100px;
+}
+
+.navbar_menu{
+    position:relative;
+    float:left;
+    display:flex;
+    list-style:none;
+    padding-left:0;
+    width: 25%;
+    justify-content: space-evenly;
+}
+
+.navbar_menu li{
+    clear:both;
+    padding: 8px 12px;
+}
+/* g호버 굳이? 굳이...?  */
+.navbar_menu li:hover{
+    background-color: rgb(255, 224, 224);
+    border-radius : 4px;
+}
+
+
+
+/* 검색 아이콘 css */
+.container-1{
+width: 300px;
+vertical-align: middle;
+white-space: nowrap;
+position: relative;
+}
+
+.container-1 input#search{
+width: 300px;
+height: 45px;
+background: #ffffff70;
+border: none;
+font-size: 10pt;
+float: left;
+color: #fdfdfdcb;
+padding-left: 45px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+/* textholder에 색상 넣기 */
+
+.container-1 input#search::-webkit-input-placeholder {
+color: #65737e;
+}
+.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+color: #65737e;  
+}
+.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+color: #65737e;  
+}
+.container-1 input#search:-ms-input-placeholder {  
+color: #65737e;  
+}
+
+/* 거지같은 검색아이콘새끼 자리잡아주기 */
+.container-1 .icon{
+position: absolute;
+top: 50%;
+margin-left: 17px;
+margin-top: 12px;
+color: #4f5b66;
+}
+.box{
+    position: relative;
+}
+.container-2{
+    bottom: -23px;
+    position: absolute;
+    width: 100%;
+    display:flex;
+    justify-content: space-evenly;
+    
+}
+.container-2 a{
+    color:#4f5b66;
+    font-size:small;
+}
+
+
+
+/* 반응형 ㅗㅗㅗㅗㅗ */
+@media screen and (max-width: 800px) {
+    .navbar{
+        flex-direction: column;
+        align-items:flex-start;
+    }
+
+    .navbar_menu{
+        flex-direction: column;
+        align-items: center;
+        width:100%;
+    }
+    
+    .navbar_menu li{
+        width:100%;
+        text-align: center;
+    }
+
+
+}
+
+/* 헤더영역 끝 */
+
+/* 메인 영역 */
+
+.main-contents{
+    width: 1000px;
+    margin: 0 auto;
+}
+.main-contents-wrap{
+    width: 100%;
+}
+
+.main1>div{
+    width:1000px;
+    height:420px;
+    margin: 0 auto;
+    margin-top:3%;
+    color : white;
+}
+
+.main1>div span {
+	
+	color:white;
+}
+
+
+/* 배경색지정 */
+
+.recommend_music_wrap{
+ background-color: #B86E65;
+}
+
+#latestMusic{
+background-color: #322E56;
+}
+
+.content2-wrap{
+  background-color: #696156;
+}
+
+/* 글자색 */
+main-contents * {
+	color : white;
+	
+}
+
+
+/* 삭제예정 */
+.main-wrap{
+    height:1500px;
+    margin-top:2%;
+}
+
+
+    /* content1 */
+    .content1-wrap{
+        display:flex;
+        justify-content: center;
+        height:420px;
+        width: 1000px;
+        margin:0 auto ;
+    }
+
+    #latestMusic{
+        margin : 0 auto;
+        margin-top:3%;
+    }
+
+    #latestMusic table{
+        margin:0 auto;
+    }
+
+    .latestMusic_table{
+        position:relative;
+        height:400px;
+    }
+    
+    .content1_img_inf > a {
+		display: flex;
+	    justify-content: center;
+	    position:relative;
+	}
+    
+    .content1_img_inf img{
+        width:50%;
+        height:50%;
+    }
+
+/* 	.content1_img_inf button{
+	    position: absolute;
+	    right: 5px;
+	    bottom: 4px;
+	} */
+    .latestMusic_inf_title{
+        font-size:medium;
+    }
+
+    .latestMusic_inf_artist{
+        font-size:small;
+        color:gray;
+    }
+
+    .latestMusic_table{
+        
+        height:80%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .latestMusic_table td{
+        width : 20%;
+    }
+
+    .content1Title h2 {
+        display: inline-block;
+        margin-left: 50px;
+    }
+
+    .slick-slide img{
+        display: inline;
+    }
+    /* content1끝 */
+
+
+
+    /* content2 */
+
+    .content2-wrap {
+        display: flex;
+        justify-content: center;
+        width: 1000px;
+        height: 420px;
+        margin: 0 auto;
+    }
+
+    #recommend_pl {
+        margin: 0 auto;
+    }
+
+    .content2_title_wrap {
+        margin: 0% -5% 0% 10%;
+        display: flex;
+        align-items: center;
+    }
+
+    .content2_title {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    #recommend_pl_content {
+        border-spacing: 70px 20px;
+        margin: 3% 0% 2% 4%;
+    }
+
+    #recommend_pl_content img {
+        width: 120px;
+        height: 120px;
+    }
+
+    #recommend_pl_content span{
+        font-size:medium;
+    }
+
+    .recommend_pl_title{
+        width:125px;
+        text-overflow:ellipsis; 
+        white-space : nowrap;
+        overflow:hidden;
+    }
+
+    .img_play_btn{
+        position:relative;
+    }
+
+    .img_play_btn button{
+        position:absolute;
+        right:5px;
+        bottom:4px;
+    }
+
+	.img1_play_btn button{
+		position:absolute;
+	    right: 47px;
+	    bottom: 3px;
+	}
+    /* content2 끝 */
+
+
+        /* content3 시이이이ㅣ이이작 */
+
+        .recommend_music_wrap{
+            display:flex;}
+    
+            .recommend_music_title{
+            display: flex;
+                align-items: center;
+                flex-direction: column;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin: 0 auto;
+                width: 20%;
+                justify-content: center;
+            }
+            
+            .recommend_music_wrap{
+                width:80%;
+            }
+    
+            .recommend_music_title1{
+                font-size: 30px;
+                font-weight: 600;
+                margin-left: 25%;
+                margin-bottom: 20%;
+            }
+    
+            .content3_music_list1 {
+			    display: flex;
+			    justify-content: space-around;
+			    flex-wrap: wrap;
+			    margin: 0 auto;
+			    height: 100%;
+			    align-content: space-around;
+			}
+    	
+    		.content3_music_list1 .recommend_music1{
+    			text-align: center;
+    			display: flex;
+    			flex-direction: column;
+    		}
+            .content3_img_inf img{
+                margin:0 auto;
+                width:50%;
+            }
+            
+            .content3_img_inf>a {
+            	position : relative;
+            }
+            
+            
+			.content3_img_inf .play_btn{
+			    position: absolute;
+			    right: 47px;
+			    bottom: 3px;
+			}
+			
+			.content3_music_list1>div{
+				width:25%;
+			}
+            .play_all_recommend_music{
+                margin-left: 100%;
+                width:100%;
+            }
+    
+            .play_all_recommend_music button{
+                position:absolute;
+                background-color: transparent;
+                border: none;
+            }
+    
+            .play_all_recommend_music button img{
+                width: 40px;
+            }
+    
+            .img_play_btn img{
+                width: 100%;
+            }
+    
+            /* contetn3 끝!  */
+
+
+
+	
+	
+		/* 글자 수 제한 */
+		
+		.latestMusic_inf_title, .latestMusic_artist, .recommend_pl_title, .recomentdMusic_inf_title, .recomentdMusic_artist {
+			width: 125px;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			display: inline-block;
+		}
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 메인 영역 끝 */
+
+
+/* 푸터영역 */
+
+
+
+
+
+
+footer {
+    position: absolute;
+    width:100%;
+    margin-top: 60px;
+    clear: both;
+    background: #fff;
+    border-top: 1px solid #e0e1e5;
+    padding-top: 32px;
+    bottom: 70px;
+}
+
+footer .footer_inner {
+    max-width: 1440px;
+    padding: 0;
+    margin: 0 auto
+}
+
+footer .debugs_fnb {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    font-size: 13px
+}
+
+footer .debugs ul {
+    width: 191px
+    
+}
+
+footer .debugs li {
+    padding: 8px 0
+}
+
+footer .debugs li .icon {
+    padding-bottom: 2px
+}
+
+footer .debugs a,footer .debugs button,footer .debugs div {
+    color: #8e8e93
+}
+
+footer .debugs .footer_title {
+    font-weight: 700
+}
+
+footer .debugs .footer_title a {
+    color: #000
+}
+
+footer .debugs .footer_title a:hover {
+    color: #3f3fff
+}
+
+footer .policy_area{
+    display: flex;
+    justify-content: center;
+}
+
+footer .policy_area ul {
+    font-size: 0
+    
+}
+
+footer .policy_area li {
+    position: relative;
+    display: inline-block;
+    padding: 0 8px
+}
+
+footer .policy_area li:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 12px;
+    content: "";
+    background: #d8d8d8
+}
+
+footer .policy_area li a {
+    font-size: 12px;
+    color: #8e8e93
+}
+
+footer .policy_area li a em {
+    font-style: normal;
+    font-weight: 700;
+    color: #8e8e93
+}
+
+footer .policy_area li a em:hover {
+    color: #3f3fff
+}
+
+footer .policy_area li:first-child {
+    padding-left: 0
+}
+
+footer .policy_area li:first-child:before {
+    display: none
+}
+
+footer .inquiry_area li a:hover path {
+    fill: #3f3fff
+}
+
+footer .inquiry_area li svg {
+    padding-left: 2px
+}
+
+footer .social_area {
+    position: absolute;
+    top: 40px;
+    right: 0
+}
+
+footer .social_area ul {
+    font-size: 0
+}
+
+footer .social_area li {
+    position: relative;
+    display: inline-block;
+    padding-left: 16px
+}
+
+footer .social_area li:nth-child(2) {
+    padding-left: 14px
+}
+
+footer .social_area li a {
+    display: inline-block;
+    width: 18px;
+    height: 22px;
+    vertical-align: middle
+}
+
+footer .social_area li .btn-facebook {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAA2CAYAAABz508/AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAQqADAAQAAAABAAAANgAAAADk/8cYAAACqElEQVRoBe2Zv2/TQBTH33MNVFWFxMBA6OLGikBhy1S6lYGRjYkJISRQ+QeYsvAHMMIGYqxY2FEWFlYUKpGWiB8SRYRkQCqRXN/jxYkl39I7ktM5lp4V5e5yz+f3Pvf1y/mMsERHs9k8Ox6Pt5XCLUB1lQjrgHAeAdaJIEWE3wQwQCAugwESDcIweN3r9fYXDSNcdAAX5zcajctJmj44/ju+TUTrABwuf/Iyq05aBBtcbEzbKjNJlDrg3xYGEfAgpR3tdjuIovpucpK+I0V3pxDKcac0RbRarbUXL189J6Cd6eyXAyC/aimK4JnH4Wj0jEjt5I6UXZaiiCiO77MKbpQdfPH63hXBifEKEjwuOrEMde+KSJL0IeeFM8sQfNEHr4qI4/girwtuFR1YlrpXRaQp3JxHDYg44LXDN15IDYHwuAhvBfFrsT1v3SsIVsOW7V8lB5+w/ZO11dW9brc7nDdA2/P8ggB1zdYxnvnd/ueDN9b2Cxp6zREAeMnGXwT81O/7gzDxyTMIOGcDAhC/W9k5NPINwqHrbocSEDOeAkJA6LeWKEIUIYrQCcxavC/q5og24z3TSLwRc91kk/Ujjvi54qPRFvGof3j4yGhnYeBsiW0dpIVTvEt7gR+ytk2mvK/x3mRj21/pZMnb+0e2gZrsKg1CAf4wBWjbX2kQiCQgsplWooiMA6ISRUxIhGEoIHiTh2q12s9MGg6+KpssOVH+6nQ6Jw4YZEM4W1AFCPdMThEgv+ajFZMdrw8+8JL36Wl2ROGf0/r/t8/ZEtvmwtFm/QuDML7cQQze8sbtHZsxXdlU9tZwBSAfR0DMSAgIAZHfFNNSFCGKEEXoBEQROg/JEaIIUYROQBSh85AcIYoQRegERBE6D8kRoghRhE5AFKHzkBwx4/EPqZ+traUwFyQAAAAASUVORK5CYII=) no-repeat 0 0;
+    background-size: 100%
+}
+
+footer .social_area li .btn-instagram {
+    background: url(data:image/png;base64,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) no-repeat 0 0;
+    background-size: 100%
+}
+
+footer .social_area li .btn-youtube {
+    background: url(data:image/png;base64,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) no-repeat 0 0;
+    background-size: 100%
+}
+
+footer .social_area li .btn-twitter {
+    background: url(data:image/png;base64,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) no-repeat 0 0;
+    background-size: 100%
+}
+
+footer address {
+    padding-top: 16px;
+    overflow: hidden;
+}
+
+footer address .inner {
+    margin-left: -8px
+    
+}
+
+footer address span {
+    position: relative;
+    display: inline-block;
+    padding-right: 7px;
+    padding-left: 8px;
+    font-size: 11px;
+    font-style: normal;
+    color: #bcbcc0
+}
+
+footer address span+span:before {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    display: block;
+    width: 1px;
+    height: 11px;
+    content: "";
+    background-color: #d8d8d8
+}
+
+footer address a {
+    color: #bcbcc0
+}
+
+footer address [class*=address_] {
+    overflow: hidden;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+footer address .address_bottom {
+    margin-top: 4px
+}
+
+footer .copyright {
+    padding-top: 16px;
+    padding-bottom: 0;
+    font-size: 11px;
+    color: #8e8e93;
+    display: flex;
+    justify-content: center;
+}
+
+footer .copyright span {
+    padding-right: 10px
+}
+
+footer .browser_support {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 11px;
+    line-height: 20px;
+    color: #cacace
+}
+
+footer.simple {
+    text-align: center
+}
+
+footer.simple .policy_area a,footer.simple .policy_area a em {
+    color: #666
+}
+
+footer.simple .copyright {
+    padding-top: 32px
+}
+
+footer.simple .copyright span {
+    font-size: 12px;
+    color: #989898
+}
+
+
+
+
+
+
+/* 푸터영역 끝 */
+
+
+/* 하단 플레이어 */
+
+
+/* 플레이어 전체화면 */
+
+
+        /* 플레이어 전체화면 설정 */
+
+        .full_player {
+            position: fixed;
+            top: 50vw;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* background-color: #0f0e0e; */
+            transition: all 1s ease-in-out  ;
+        }
+        
+        .full_player_inner{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+        .full_player_bg{
+            height: 100%;
+            background-color: black;
+            opacity: 0.92;
+        }
+        .player_header{
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 30px 55px 20px;
+        }
+
+        /* 왼쪽 */
+        .full_player_player{
+            width: 100%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .full_player_content{
+            display: flex;
+        }
+
+        .content_box{
+            display: flex;
+            position: relative;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            width: 500px;
+            min-height: 460px;
+            text-align: center;
+        }
+
+        .content_title{
+            width:100%;
+            margin-bottom: 8px;
+            font-size:22px;
+            font-weight: 600;
+            color:white;
+        }
+
+        .content_box .artist_name{
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            max-width:500px;
+            margin-bottom:20px;
+            font-size:14px;
+            font-weight:400;
+          
+        }
+
+        .artist_name_link{
+            cursor:pointer;
+        }
+        #artist_name{
+            color:#989898;
+        }
+        /* 반응형으로 사이즈 조절ㄹ? */
+        .content_thumbnail img{
+            position:relative;
+            width: 360px;
+            height: 360px;
+            margin-bottom:25px;
+            border-radius:10px;
+            outline:none;
+            
+        }
+
+        /* 오른쪽? */
+
+        .music_item_content{
+            display: flex;
+            margin: 10px;
+        }
+
+        .music_item_text{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            margin-left: 5%;
+            width: 100%;
+        }
+
+        .music_item_text_title{
+            color: white;
+        }
+
+        .music_item_text_artist{
+            color: #989898;
+            font-size: 13px;
+            margin-left:10px;
+        }
+
+        .music_item_text_playtime{
+            font-size: 17px;
+            display: flex;
+            justify-content: end;
+            width: 50%;
+        }
+        
+        .full_player_playlist{
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+             width:100%;
+        }
+
+        .playlist_tab{
+            position:relative;
+        }
+
+        .playlist_tab_inner{
+            margin-right: 10px;
+            border-bottom: 1px solid hsla(0,0%,94%,.2);
+        }
+
+        .playlist_tab_list{
+            display:flex;
+        }
+
+        .playlist_tab_list button{
+            /* color:white; */
+            /* border-bottom: 3px solid #989898; */
+            color:#989898;
+            padding-bottom:10px;
+            margin-right:15px;
+            font-size:15px;
+            font-weight: 500;
+            border:none;
+            background-color: transparent;
+
+        }
+
+        /*기능 구현 후 지울거임 보여주기 */
+        /* .playlist_tab_list .playlist_tab_1{
+            color:white;
+            border-bottom: 3px solid #989898;
+            font-size:20px;
+            font-weight:700;
+        } */
+        .playlist_tab_list .on{
+            color: white;
+            border-bottom: 3px solid #989898;
+            font-size: 20px;
+            font-weight: 700;
+            width:100%;
+        }
+
+
+        .music_item_content a{
+            width: 13%;
+        }
+
+
+        .simplebar img{
+            width: 100%;
+            height: auto;
+        }
+
+
+
+        .music_playlist{
+            height: 35vw;
+            overflow-y: scroll;
+
+        }
+
+        /* 플레이어 전체화면 css 끝 ! */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 플레이어 전체화면 끝!  */
+
+
+
+/* 열기 전 미니 플레이어컨트롤러*/
+.player_ct {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.player_ct.mini .playbar_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.player_ct_mini {
+    background-color: #000;
+    opacity:0.9;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.player_ct.mini .track_area{
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 30%;
+}
+
+.player_ct.mini .playbar_ct {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    max-width: 1920px;
+    height: 80px;
+    padding: 21px 20px 19px;
+}
+/* 재생바 우째ㅠ*/
+.player_seek_wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    height: 20px;
+    padding-bottom: 4px;
+    background-color: white;
+    }
+
+.player_seek_action{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.playbar_ct{
+    display: flex;
+    padding: 5px;
+    width:100%;
+}
+
+.playbar_ct button{
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    color: #fff;
+}
+
+.playbar_wrap{
+    display:flex;
+    height: 70px;
+}
+
+.player_controller{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    align-items: center;
+}
+
+.player_ct_mini .track_area {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    width: 40%;
+}
+
+.player_ct .track_area .thumb {
+    overflow: hidden;
+    background-size: 100% 100%;
+}
+
+.track_area .thumb img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-image: url(https://cdn.music-flo.com/image/album/047/966/04/0…8694.jpg?1597736596611/dims/resize/500/quality/90)
+}
+
+.track_info {
+    max-width: clac(100% -96px);
+    margin-left: 12px;
+}
+
+.track_info .title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+
+.track_info .artist {
+    padding-top: 4px;
+    font-size: 12px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #989898;
+}
+
+.player_ct.mini .player_controller { 
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.controller{
+    /* display: flex;
+    gap: 12px;
+    justify-content: center;
+    width: 260px; */
+    display: -webkit-box;
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.control button{
+    color:#fff;
+}
+
+.icon{
+    vertical-align: middle;
+}
+
+.control_toggle_play{
+    position: relative;
+    width: 44px;
+    height: 44px;
+}
+
+.player_side{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player_side_right{
+    display:flex;
+    justify-content: space-between;
+    /* align-items: center;
+    width:30%; */
+}
+
+.player_time{
+    display:flex;
+    margin-left:24px;
+    font-size:11px;
+    font-weight:400;
+    color:#989898;
+}                                                                             
+
+.player_time_current{
+    color:#fff;
+}
+
+
+
+.slick-prev:before, .slick-next:before{
+    color:black;
+}
+
+
+
+        
+
+
+
+
+/* 하단 플레이어바 끝! */

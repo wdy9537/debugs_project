@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="listenPlaylist">
+      INSERT INTO PLAYLIST_TRACK
+      VALUES (
+              ( SELECT ( NVL(MAX(TRACK_NO),0) + 1) TRACK
+              FROM PLAYLIST_TRACK
+              WHERE PLAYLIST_NO = (SELECT PLAYLIST_NO FROM PLAYLIST WHERE USER_NO = ?) ), 
+              (SELECT PLAYLIST_NO FROM PLAYLIST WHERE USER_NO = ?), 
+              ?
+      )
+   </entry>
+   
+   <entry key="showPlayList">
+      SELECT *
+      FROM PLAYLIST
+      WHERE USER_NO=?
+      ORDER BY PLAYLIST_NO
+   </entry>
+   
+   <entry key="countPlaylist">
+      SELECT COUNT(*) C
+      FROM PLAYLIST_TRACK
+      WHERE PLAYLIST_NO = ?
+   </entry>
+   
+   <entry key="addPlaylist">
+      INSERT INTO PLAYLIST (PLAYLIST_NO, USER_NO, PLAYLIST_SUBJECT)
+      VALUES (SEQ_PLAYLIST.NEXTVAL, ?, ?)
+   </entry>
+   
+   <entry key="insertMyPlaylist">
+      INSERT INTO PLAYLIST_TRACK 
+      VALUES (
+            ( SELECT ( NVL(MAX(TRACK_NO),0) + 1) TRACK
+              FROM PLAYLIST_TRACK
+              WHERE PLAYLIST_NO = ? ),
+              ?, ?
+         )
+   </entry>
+   
+   <entry key="deletePlaylist">
+      DELETE PLAYLIST_TRACK
+      WHERE PLAYLIST_NO = ? AND MUSIC_NO = ?
+   </entry>
+   
+   <entry key="selectMusicLike">
+      SELECT *
+      FROM LIKE_MUSIC
+      WHERE USER_NO = ? AND MUSIC_NO = ?
+   </entry>
+   
+   <entry key="insertMusicLike">
+      INSERT INTO LIKE_MUSIC
+         VALUES ( ?, ? )
+   </entry>
+   
+   <entry key="deleteMusicLike">
+      DELETE LIKE_MUSIC
+      WHERE USER_NO = ? AND MUSIC_NO = ?
+   </entry>
+   
+   <entry key="checkMusicLikeList">
+      SELECT MUSIC_NO
+      FROM LIKE_MUSIC
+      WHERE USER_NO = ?
+   </entry>
+
+</properties>

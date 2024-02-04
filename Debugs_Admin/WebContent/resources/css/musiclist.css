@@ -1,0 +1,157 @@
+/* 듣기 미니 팝업 */
+.play_popup_outer{
+    display: none;
+}
+.play_popup{
+    width: 400px;
+    height: 100px;
+    background: black;
+    border-radius: 1em;
+    display: flex;
+    margin: auto;
+    position: fixed;
+    transform:translateX(-50%);
+    top: 80%;
+    left: 50%;
+    z-index: 1;
+}
+.play_popup>div{
+    justify-content: space-between;
+    text-align: center;
+    padding-top: 10px;
+    width: 33%;
+    color: white;
+    cursor: pointer;
+}
+.play_popup img {width: 50px; height: 50px;}
+
+/* 듣기 미니 팝업 > 담기 팝업 */
+.my_list_popup_outer{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    left:0;
+    display: none;
+    z-index: 5;
+}
+.my_list_popup_outer.show{
+    display: block;
+}
+.my_list_popup{
+    width: 500px;
+    height: 70%;
+    background-color: rgb(50,50,50);
+    border-radius: 1em;
+    position: fixed;
+    top: 15%;
+    transform:translateX(-50%);
+    left: 50%;
+    text-align: center;
+    color: white;
+}
+
+.my_list_popup>h1{
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray;
+}
+.my_list_popup>div{
+    text-align: left;
+    padding: 0 30px;
+    height: 80%;
+    overflow-y: scroll;
+}
+
+.new_playlist{
+	float: right;
+	border: none; 
+	padding: 5px;
+	font-size: 10px;
+	background-color: #eee;
+	cursor: pointer;
+}
+.new_playlist:hover{background-color:#aaa
+}
+.playlist_title{
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.my_list_list{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+}
+.my_list_list:hover:hover{ background-color: #999;}
+.my_list_list>table td{
+    padding-left: 10px;
+}
+.my_list_list>table th>img{
+    width: 100%;
+    height: 100%;
+}
+
+/* 새 플리 만들기 */
+.add_playlist {
+	width: 270px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    transform:translateX(-50%);
+    left: 50%;
+    z-index: 6;
+    background-color: #777;
+    border-radius: 1em;
+    padding: 14px;
+    display: none;
+}
+.add_playlist.show{
+    display: block;
+}
+.add_playlist .button{
+	margin: auto;
+	margin-top: 10px;
+	text-align: center;
+}
+.add_playlist button{
+	padding: 5px;
+	width: 50px;
+	font-size: 14px;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 0;
+}
+.add_playlist .add_save{
+	background-color: rgb(240,75,85);
+	color: white;
+}
+.add_playlist .add_cancel{
+	background-color: white;
+}
+
+/* 스크롤바 */
+.my_list_popup>div::-webkit-scrollbar { width: 10px; } /* 스크롤 바 */
+.my_list_popup>div::-webkit-scrollbar-track { background-color: rgb(50,50,50); } /* 스크롤 바 밑의 배경 */
+.my_list_popup>div::-webkit-scrollbar-thumb { background: #777; border-radius: 10px; } /* 실질적 스크롤 바 */
+.my_list_popup>div::-webkit-scrollbar-thumb:hover { background: #999; } /* 실질적 스크롤 바 위에 마우스를 올려다 둘 때 */
+.my_list_popup>div::-webkit-scrollbar-button { display: none; } /* 스크롤 바 상 하단 버튼 */
+
+/* 순위 */
+.rank{font-weight: bold;}
+.rank.rank_1{color: rgb(240,75,85); font-size: 24px}
+.rank.rank_2{color: rgb(227,145,164);  font-size: 21px}
+.rank.rank_3{color: rgb(246,200,106);  font-size: 18px}
+
+.chartIndex{
+	border: 0px solid black;
+	height: 33px;
+	border-radius: 20px;
+	background-color: #ff3f6c;
+	color: white;
+	cursor: pointer;
+	padding: 5px 10px;
+	font-size: 12px;
+	margin-right: 10px;
+}

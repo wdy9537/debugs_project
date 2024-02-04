@@ -1,0 +1,277 @@
+@charset "UTF-8";
+.outbox{
+     width: 100%;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     margin-top: 50px;
+     margin-left: -35px;
+     
+ }
+ 
+
+        hr {
+            border: none;
+            /* 기본 테두리 제거 */
+            height: 0.5px;
+            /* 수평선의 높이 */
+            background-color: rgb(226, 225, 225);
+            margin-top: -5px;
+            margin-bottom: -5px;
+        }
+
+        /* 상단 앨범 정보 */
+
+        #albumcover {
+            margin-right: 50px;
+            width: 400px;
+            height: 400px;
+            border-radius: 15px;
+            z-index: 1;
+
+        }
+
+        #vinyl {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            z-index: -1;
+            transform: translate(-145PX, 10PX);
+
+
+
+        }
+
+        .albuminfo1 {
+            float: left;
+            margin-top: 10px;
+            z-index: 1;
+        }
+
+        .albuminfo2 {
+            float: left;
+            margin-right: 40px;
+            z-index: 1;
+            transform: translate(110PX, 0PX);
+            margin-bottom: 20px;
+
+        }
+
+        .albuminfo3 {
+            float: left;
+            z-index: 1;
+            transform: translate(90PX, 0PX);
+
+        }
+
+        #albumname {
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-size: 45px;
+            width: 380px;
+        }
+
+        #artistname {
+            margin: 5px 0px 25px 2px;
+            color: #ff3f6c;
+            font-size: 30px;
+        }
+
+        #albuminfotable {
+            margin-top: 20px;
+            width: 340px;
+        }
+
+        #albuminfotable tr {
+            height: 55px;
+
+        }
+
+        #albuminfotable tr td {
+            font-size: 16.5px;
+            font-weight: bold;
+            color: #696767;
+        }
+
+        #keyword {
+            height: 50px;
+            vertical-align: top;
+        }
+
+        #keywordstyle {
+            vertical-align: top;
+        }
+
+        #inputcart {
+            width: 22px;
+            height: 22px;
+            margin-right: 10px;
+            cursor: pointer;
+
+        }
+
+        #inputdown {
+            width: 22px;
+            height: 22px;
+            margin-top: 7px;
+            cursor: pointer;
+        }
+
+        .playbtn {
+            width: 110px;
+            height: 110px;
+            margin-top: 22px;
+            cursor: pointer;
+        }
+
+        .lovebtn {
+            width: 65px;
+            height: 65px;
+            margin: 15px 0px 0px 23px;
+            cursor: pointer;
+        }
+
+        /* 앨범 상단 정보 끝 */
+
+
+
+
+
+
+        /* 확대, 곡 길이, 전체재생 */
+        .biggertxt {
+            margin-left: 150px;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #2b2a2a;
+            cursor: pointer;
+            font-weight: 700;
+            border: 1px solid rgb(207, 203, 203);
+            width: 115px;
+            height: 28px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+        }
+
+        #biggerbtn {
+            width: 22px;
+            height: 22px;
+            margin-left: 8px;
+            margin-top: 5px;
+            cursor: pointer;
+            transform: translate(-674px);
+
+        }
+
+
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #albuminfotable2{
+            padding-left: 10px;
+        }
+
+
+        
+
+
+
+        /* 앨범 소개 */
+        .album-intro-container .album-intro-text {
+            display: none;
+            /* 초기에 텍스트 숨김 */
+            padding: 10px;
+            /* 선택적인 스타일링 */
+            font-size: 16px;
+
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+            line-height: 1.7;
+            border: none;
+            background-color: transparent;
+            padding-left: 10px;
+
+
+        }
+
+        .album-intro-container.open .album-intro-text {
+            display: block;
+            /* 텍스트 표시 */
+        }
+
+        .album-intro-container.open .arrow {
+            transform: rotate(90deg);
+            /* 화살표 회전 */
+        }
+
+        #albumintro {
+            cursor: pointer;
+            color: #ff3f6c;
+            font-weight: 1000;
+            font-size: 22px;
+        }
+
+
+
+
+
+
+
+
+
+
+        /* 모달 스타일링 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 800px;
+            max-height: 600px;
+        }
+
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }

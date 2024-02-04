@@ -1,0 +1,198 @@
+@charset "UTF-8";
+#wholefaqpage {
+	width: 1000px;
+	margin: auto;
+	margin-top: 50px;
+	transform: translate(-102px);
+}
+
+/* 메인 글씨 */
+#faqmaintext {
+	display: flex;
+	justify-content: center;
+	font-size: 35px;
+	transform: translate(120px);
+}
+
+/* c/s 종류 버튼 */
+.wholefaqmenu {
+	display: flex;
+	justify-content: center;
+	margin-left: 200px;
+	margin-bottom: 30px;
+}
+
+.faqmenu {
+	height: 50px;
+	width: 190px;
+	background-color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 19px;
+	border-radius: 20px;
+	transition: transform 0.1s ease-in-out;
+	margin-bottom: 40px;
+	font-size: 20px;
+	font-weight: 900;
+	margin-top: 35px;
+}
+
+.faqmenu a {
+	text-decoration: none;
+	color: black;
+}
+
+.faqmenu a:hover {
+	color: #fa5d82;
+}
+
+#faqchoicemenu {
+	background-color: #fa5d82;
+}
+
+#faqchoicemenu a {
+	color: rgb(255, 255, 255);
+	text-align: center;
+}
+
+/* c/s 종류 버튼 끝*/
+
+/* 검색창, 분류 */
+.faqkind {
+	width: 230px;
+	height: 45px;
+	font-size: 15px;
+	display: flex;
+	border-radius: 5px;
+	border-color: #d6d6d6;
+	margin-left: 140px;
+}
+
+
+/* 검색창, 분류 끝 */
+
+/* faq 테이블*/
+#faqtable {
+	text-align: center;
+	border-collapse: collapse;
+	transform: translate(130px);
+	cursor: pointer;
+	
+}
+
+#faqtable thead tr {
+	background-color: #f3f3f3;
+	font-size: 16px;
+	color: #7e7c7c;
+	height: 45px;
+}
+
+#faqtable tr {
+	height: 58px;
+	font-weight: 500;
+	font-size: 17px;
+}
+
+.categorybold {
+	font-weight: 700;
+}
+
+#faqtable tbody tr:nth-child(even) {
+	background-color: #fff8fa;
+	/* 짝수 행 배경색 */
+}
+
+#faqtable tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+	/* 홀수 행 배경색 */
+}
+
+#faqtable tbody tr td:first-child {
+	border-top-left-radius: 10px;
+	/* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+	border-bottom-left-radius: 10px;
+}
+
+#faqtable tbody tr td:last-child {
+	border-top-right-radius: 10px;
+	/* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+	border-bottom-right-radius: 10px;
+}
+
+#faqtable thead tr th:first-child {
+	border-top-left-radius: 10px;
+	/* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+	border-bottom-left-radius: 10px;
+}
+
+#faqtable thead tr th:last-child {
+	border-top-right-radius: 10px;
+	/* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+	border-bottom-right-radius: 10px;
+}
+
+#faqtable>tbody>tr:hover {
+	background: #fa5d82;
+	cursor: pointer;
+	color: white;
+}
+
+.faq-row {
+	transition: background-color 0.1s ease-in-out;
+}
+
+/* 상세 faq 내용*/
+.faq-content {
+	display: none;
+	background-color: #f3f3f3;
+}
+
+.faq-content td {
+	padding: 0px;
+	border-radius: 5px;
+}
+
+.faq-row.clicked+.faq-content {
+	display: table-row;
+}
+
+.faq-detail-content {
+	width: 950px;
+	height: 100px;
+	padding-left: 50px;
+	padding-top: 30px;
+	text-align: left;
+	font-size: 15px;
+}
+
+.faq-detail-content:hover {
+	background-color: #fff8fa;
+	color: black;
+	border: 0px solid;
+	cursor: auto;
+}
+
+.paging-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left:230px;
+}
+
+.paging-area button {
+  padding: 8px 15px;
+  margin: 0 2px;
+  border: none;
+  background-color: pink;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius:10px;
+  
+}
+
+.paging-area button.active {
+  background-color: #333;
+  color: #fff;
+}

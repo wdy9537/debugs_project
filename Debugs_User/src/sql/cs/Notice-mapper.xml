@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+
+	<entry key="selectList">
+	SELECT *
+	FROM (
+	    SELECT ROWNUM RNUM , A.*
+	    FROM (
+			SELECT 
+				NOTICE_NO,
+				CATEGORY_NAME, 
+				NOTICE_TITLE
+			FROM NOTICE 
+			JOIN CATEGORY ON (NOTICE_CATEGORY = CATEGORY_NO)
+			ORDER BY NOTICE_NO DESC
+		) A
+	)
+	WHERE RNUM BETWEEN ? AND ?
+</entry>
+
+
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*)
+		FROM NOTICE
+	</entry>
+	
+	
+	<entry key="selectCategoryList">
+		SELECT CATEGORY_NO ,
+		       CATEGORY_NAME
+		FROM CATEGORY
+	</entry>
+	
+	
+	
+	<entry key="selectNotice">
+		SELECT NOTICE_NO,
+				CATEGORY_NAME, 
+		       NOTICE_TITLE,
+		       NOTICE_CONTENT
+		FROM NOTICE 
+		JOIN CATEGORY ON (NOTICE_CATEGORY = CATEGORY_NO)
+		WHERE NOTICE_NO = ? 
+	</entry>
+	
+	
+	<entry key="selectNoticeCategory">
+		SELECT 
+		NOTICE_NO,
+			NOTICE_CATEGORY, 
+			NOTICE_TITLE
+		FROM NOTICE 
+		WHERE NOTICE_CATEGORY = ?
+	</entry>
+	
+	
+	
+</properties>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="playlistDetailPageView">
+		SELECT PLAYLIST_NO, PLAYLIST_TH, PLAYLIST_SUBJECT, USER_ID
+		FROM PLAYLIST
+        JOIN DEBUG_USER USING(USER_NO)
+		WHERE PLAYLIST_NO = ?
+	</entry>
+	
+	<entry key="playlistTrackSelect">
+		SELECT TRACK_NO, ALBUM_CHANGENAME, MUSIC_TITLE, ALBUM_TITLE, ARTIST_NAME, MUSIC_NO
+		FROM PLAYLIST_TRACK
+		JOIN MUSIC USING(MUSIC_NO)
+		JOIN ALBUM USING(ALBUM_NO)
+		JOIN ARTIST USING(ARTIST_NO)
+		JOIN PLAYLIST USING(PLAYLIST_NO)
+		WHERE PLAYLIST_NO = ?
+		ORDER BY TRACK_NO
+	</entry>
+	
+	<entry key="insertAllPlaylist">
+		INSERT INTO PLAYLIST_TRACK 
+		SELECT TRACK_NO, (SELECT PLAYLIST_NO FROM PLAYLIST WHERE USER_NO=?, MUSIC_NO 
+		FROM PLAYLIST_TRACK 
+		WHERE PLAYLIST_NO = ?
+	</entry>
+	
+	<entry key="insertAllPlaylistShuffle">
+		INSERT INTO PLAYLIST_TRACK 
+		SELECT TRACK_NO, (SELECT PLAYLIST_NO FROM PLAYLIST WHERE USER_NO= ?), MUSIC_NO
+		from ( 
+		    SELECT * FROM PLAYLIST_TRACK
+		    ORDER BY DBMS_RANDOM.RANDOM 
+		)
+		WHERE PLAYLIST_NO = ?
+	</entry>
+	
+	<entry key="selectRecommnedPlaylist">
+		SELECT *
+		FROM (SELECT PLAYLIST_NO, PLAYLIST_TH, PLAYLIST_SUBJECT, USER_ID 
+            FROM PLAYLIST
+            JOIN DEBUG_USER USING(USER_NO)
+            JOIN PLAYLIST_TRACK USING(PLAYLIST_NO)            
+			ORDER BY DBMS_RANDOM.VALUE)
+		WHERE ROWNUM &lt;= 4
+	</entry>
+	
+	<entry key="copyPlaylist">
+		INSERT INTO PLAYLIST_TRACK
+        VALUES(?,?,?)
+	</entry>
+	
+	<entry key="selectPlaylistTrackMusicNo">
+		SELECT MUSIC_NO
+       	FROM PLAYLIST_TRACK
+        WHERE PLAYLIST_NO = ?
+	</entry>
+	
+	<entry key="playlistTrackCount">
+		SELECT ( NVL(MAX(TRACK_NO),0) ) TRACK
+        FROM PLAYLIST_TRACK
+        WHERE PLAYLIST_NO = ?
+	</entry>
+	
+	<entry key="insertCopyPlaylist">
+		INSERT INTO PLAYLIST_TRACK
+        VALUES(?,?,?)
+	</entry>
+	
+	<entry key="playlistTh">
+		SELECT TRACK_NO, ALBUM_CHANGENAME
+		FROM PLAYLIST_TRACK 
+		JOIN MUSIC USING(MUSIC_NO)
+		JOIN ALBUM USING(ALBUM_NO)
+		WHERE PLAYLIST_NO = ? 
+		ORDER BY TRACK_NO
+	</entry>
+
+</properties>

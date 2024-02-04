@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectQnaList">
+		SELECT 
+			QNA_NO, 
+			QNA_CONTENT,
+			QNA_RESULT,
+			QNA_ANSWER,
+			QNA_FILE_PATH,
+			QNA_IMAGE,
+			QNA_IMAGE_CHANGE
+		FROM QNA
+		WHERE QNA_USER_NO = 2
+		ORDER BY QNA_NO DESC
+</entry>
+</properties>

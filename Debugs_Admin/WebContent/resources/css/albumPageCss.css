@@ -1,0 +1,515 @@
+@charset "UTF-8";
+.outbox {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+#wholealbum {
+	margin-bottom: 100px;
+}
+
+hr {
+	border: none;
+	/* 기본 테두리 제거 */
+	height: 0.5px;
+	/* 수평선의 높이 */
+	background-color: rgb(226, 225, 225);
+	margin-top: -5px;
+	margin-bottom: -5px;
+}
+
+/* 상단 앨범 정보 */
+#albumcover {
+	margin-right: 50px;
+	width: 400px;
+	height: 400px;
+	border-radius: 15px;
+	z-index: 1;
+}
+
+#vinyl {
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	z-index: -1;
+	transform: translate(-180PX, 10PX);
+}
+
+.albuminfo1 {
+	float: left;
+	margin-top: 10px;
+	z-index: 1;
+}
+
+.albuminfo2 {
+	float: left;
+	margin-right: 40px;
+	z-index: 1;
+	transform: translate(110PX, 0PX);
+	margin-bottom: 20px;
+}
+
+.albuminfo3 {
+	float: left;
+	z-index: 1;
+	transform: translate(90PX, 0PX);
+}
+
+#albumname {
+	margin-top: 15px;
+	margin-bottom: 5px;
+	font-size: 45px;
+	width: 350px;
+}
+
+#artistname {
+	margin: 5px 0px 55px 2px;
+	color: #ff3f6c;
+	font-size: 30px;
+}
+
+#albuminfotable {
+	margin-top: 20px;
+	width: 340px;
+}
+
+#albuminfotable tr {
+	height: 56px;
+}
+
+#albuminfotable tr td {
+	font-size: 16.5px;
+	font-weight: bold;
+	color: #696767;
+}
+
+#keyword {
+	height: 50px;
+	vertical-align: top;
+}
+
+#keywordstyle {
+	vertical-align: top;
+}
+
+#inputcart {
+	width: 22px;
+	height: 22px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+#inputdown {
+	width: 22px;
+	height: 22px;
+	margin-top: 7px;
+	cursor: pointer;
+}
+
+#playbtn {
+	width: 110px;
+	height: 110px;
+	margin-top: 22px;
+	cursor: pointer;
+}
+
+#lovebtn {
+	width: 65px;
+	height: 65px;
+	margin: 15px 0px 0px 23px;
+	cursor: pointer;
+}
+
+#commentbtn {
+	width: 65px;
+	height: 65px;
+	margin: 15px 0px 0px 23px;
+	cursor: pointer;
+}
+
+/* 앨범 상단 정보 끝 */
+
+/* 확대, 곡 길이, 전체재생 */
+.biggertxt {
+	margin-left: 150px;
+	margin-top: 5px;
+	font-size: 14px;
+	color: #2b2a2a;
+	cursor: pointer;
+	font-weight: 700;
+	border: 1px solid rgb(207, 203, 203);
+	width: 115px;
+	height: 28px;
+	border-radius: 10px;
+	background-color: #ffffff;
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#biggerbtn {
+	width: 22px;
+	height: 22px;
+	margin-left: 8px;
+	margin-top: 5px;
+	cursor: pointer;
+	transform: translate(-40px);
+}
+
+#albumlength {
+	text-align: right;
+	color: grey;
+	margin: 8px 0px 0px 0px;
+	font-size: 15px;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+}
+
+#albumlength {
+	margin-left: auto;
+}
+
+#albumallplay {
+	border: 0px solid black;
+	width: 100px;
+	height: 33px;
+	border-radius: 20px;
+	background-color: #ff3f6c;
+	color: white;
+	font-weight: 1000;
+	padding-right: 25px;
+	padding-bottom: 4px;
+	cursor: pointer;
+}
+
+#allplaybtn {
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	transform: translate(985px, 3px);
+	filter: invert(100%);
+	cursor: pointer;
+}
+
+/* 앨범 테이블*/
+#albumtable {
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#albumtable thead tr {
+	background-color: #f3f3f3;
+	font-size: 16px;
+	color: #7e7c7c;
+	height: 45px;
+}
+
+#albumtable tr {
+	height: 58px;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+#albumtable tbody tr td img {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+#albumtable tbody tr:nth-child(even) {
+	background-color: #fff8fa;
+	/* 짝수 행 배경색 */
+}
+
+#albumtable tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+	/* 홀수 행 배경색 */
+}
+
+#albumtable tbody tr td:first-child {
+	border-top-left-radius: 10px;
+	/* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+	border-bottom-left-radius: 10px;
+}
+
+#albumtable tbody tr td:last-child {
+	border-top-right-radius: 10px;
+	/* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+	border-bottom-right-radius: 10px;
+}
+
+#albumtable thead tr th:first-child {
+	border-top-left-radius: 10px;
+	/* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+	border-bottom-left-radius: 10px;
+}
+
+#albumtable thead tr th:last-child {
+	border-top-right-radius: 10px;
+	/* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+	border-bottom-right-radius: 10px;
+}
+
+#albumtable>tbody>tr:hover {
+	background: #fa5d82;
+	cursor: pointer;
+	color: white;
+}
+
+/* 상세정보*/
+#albuminfotable2 {
+	padding-left: 10px;
+}
+
+.album-info-container {
+	margin-top: 30px;
+	font-size: 16px;
+	margin-bottom: 30px;
+}
+
+#albuminfotable2 tr {
+	height: 33px;
+}
+
+.album-info-container #albuminfotable2 {
+	display: none;
+	/* 초기에 테이블 숨김 */
+}
+
+.album-info-container.open #albuminfotable2 {
+	display: table;
+	/* 테이블을 표시 */
+}
+
+.album-info-container.open .arrow {
+	transform: rotate(90deg);
+	/* 화살표 회전 */
+}
+
+#albumdetail {
+	cursor: pointer;
+	color: #ff3f6c;
+	font-weight: 1000;
+	font-size: 23px;
+}
+
+/* 앨범 소개 */
+.album-intro-container .album-intro-text {
+	display: none;
+	/* 초기에 텍스트 숨김 */
+	padding: 10px;
+	/* 선택적인 스타일링 */
+	font-size: 16px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	line-height: 1.7;
+	border: none;
+	background-color: transparent;
+	padding-left: 10px;
+}
+
+.album-intro-container.open .album-intro-text {
+	display: block;
+	/* 텍스트 표시 */
+}
+
+.album-intro-container.open .arrow {
+	transform: rotate(90deg);
+	/* 화살표 회전 */
+}
+
+#albumintro {
+	cursor: pointer;
+	color: #ff3f6c;
+	font-weight: 1000;
+	font-size: 22px;
+}
+
+#commenthr {
+	margin-top: -60px;
+}
+
+#commenthr.open {
+	display: none;
+	/* 버튼 숨김 */
+}
+
+/* 앨범 댓글 */
+.album-comment-container .album-comment-text {
+	display: none;
+	/* 초기에 텍스트 숨김 */
+	padding: 10px;
+	/* 선택적인 스타일링 */
+	font-size: 16px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	resize: none;
+	line-height: 1.7;
+	border: 1px solid rgb(175, 174, 174);
+	border-radius: 6px;
+	width: 880px;
+	height: 90px;
+	background-color: transparent;
+	padding-left: 10px;
+}
+
+.album-comment-container.open .album-comment-text {
+	display: block;
+	/* 텍스트 표시 */
+}
+
+.album-comment-container.open .arrow {
+	transform: rotate(90deg);
+	/* 화살표 회전 */
+}
+
+#albumcomment {
+	cursor: pointer;
+	color: #ff3f6c;
+	font-weight: 1000;
+	font-size: 22px;
+}
+
+#commentsend {
+	transform: translate(455px, -110px);
+	display: block;
+	margin: 0 auto;
+	height: 110px;
+	width: 100px;
+	background-color: #7e7c7c;
+	border: 0px solid;
+	color: #ffffff;
+	justify-content: center;
+	border-radius: 15px;
+	font-size: 23px;
+	font-weight: 900;
+	opacity: 70%;
+	cursor: pointer;
+}
+
+#commentsend.open {
+	display: none;
+	/* 버튼 숨김 */
+}
+
+#commentsend:hover {
+	background-color: #fc0f46;
+	color: white;
+}
+
+#commenttable.open {
+	display: none;
+}
+
+/* 댓글 테이블*/
+#commenttable {
+	text-align: center;
+	border-collapse: collapse;
+	cursor: pointer;
+}
+
+#commenttable thead tr {
+	background-color: #f3f3f3;
+	font-size: 16px;
+	color: #7e7c7c;
+	height: 45px;
+}
+
+#commenttable tr {
+	height: 50px;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.categorybold {
+	font-weight: 700;
+}
+
+#commenttable tbody tr:nth-child(even) {
+	background-color: #fff8fa;
+	/* 짝수 행 배경색 */
+}
+
+#commenttable tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+	/* 홀수 행 배경색 */
+}
+
+#commenttable thead tr th:first-child {
+	border-top-left-radius: 10px;
+	/* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+	border-bottom-left-radius: 10px;
+}
+
+#commenttable thead tr th:last-child {
+	border-top-right-radius: 10px;
+	/* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+	border-bottom-right-radius: 10px;
+}
+
+#commenttable tbody tr td:first-child {
+	border-top-left-radius: 10px;
+	/* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+	border-bottom-left-radius: 10px;
+}
+
+#commenttable tbody tr td:last-child {
+	border-top-right-radius: 10px;
+	/* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+	border-bottom-right-radius: 10px;
+}
+
+#commenttable thead tr th:first-child {
+	border-top-left-radius: 10px;
+	/* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+	border-bottom-left-radius: 10px;
+}
+
+#commenttable thead tr th:last-child {
+	border-top-right-radius: 10px;
+	/* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+	border-bottom-right-radius: 10px;
+}
+
+#commenttable tbody tr {
+	border-bottom: 1px solid #ddd;
+}
+
+/* 모달 스타일링 */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+	display: block;
+	margin: auto;
+	max-width: 800px;
+	max-height: 600px;
+}
+
+.close {
+	color: #fff;
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	font-size: 40px;
+	font-weight: bold;
+	cursor: pointer;
+}

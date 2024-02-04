@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<entry key="selectUserPlaylist">
+		SELECT * 
+		FROM PLAYLIST
+		WHERE USER_NO = ?
+		ORDER BY PLAYLIST_NO
+	</entry>
+	<entry key="selectPlayList">
+		SELECT P.PLAYLIST_NO, PT.TRACK_NO, M.MUSIC_NO, P.PLAYLIST_NO, U.USER_NO, P.PLAYLIST_TH, P.PLAYLIST_SUBJECT, 
+		     M.MUSIC_TITLE, M.MUSIC_CHANGENAME , M.MUSIC_PATH , AL.ALBUM_PIC_PATH || AL.ALBUM_CHANGENAME ALBUM_IMG,
+		     AR.ARTIST_NAME, NVL2(LM.MUSIC_NO ,1 ,0) MLIKE
+				FROM PLAYLIST  P
+				JOIN PLAYLIST_TRACK PT  ON P.PLAYLIST_NO = PT.PLAYLIST_NO
+				JOIN MUSIC M ON PT.MUSIC_NO = M.MUSIC_NO
+				JOIN ALBUM AL ON AL.ALBUM_NO=M.ALBUM_NO
+			    JOIN ARTIST AR ON AL.ARTIST_NO = AR.ARTIST_NO
+				JOIN DEBUG_USER U ON U.USER_NO = P.USER_NO
+				LEFT JOIN LIKE_MUSIC LM ON LM.MUSIC_NO = M.MUSIC_NO
+		WHERE P.PLAYLIST_NO = ?
+		ORDER BY PT.TRACK_NO
+	</entry>
+	
+	<entry key="selectMusicArtistAlbum">
+		SELECT M.MUSIC_NO ,
+		    	 M.MUSIC_TITLE, 
+		    	 M.MUSIC_CHANGENAME , 
+		    	 M.MUSIC_PATH , 
+		    	 AL.ALBUM_PIC_PATH || AL.ALBUM_CHANGENAME ALBUM_IMG,
+		    	 AR.ARTIST_NAME, 
+		    	 NVL2(LM.MUSIC_NO ,1 ,0) MLIKE
+		FROM MUSIC M
+		JOIN ALBUM AL ON AL.ALBUM_NO=M.ALBUM_NO
+	    JOIN ARTIST AR ON AL.ARTIST_NO = AR.ARTIST_NO
+	    LEFT JOIN LIKE_MUSIC LM ON LM.MUSIC_NO = M.MUSIC_NO
+		WHERE M.MUSIC_NO = ?
+	</entry>
+	
+	<entry key="insertMusicLike">
+		INSERT INTO LIKE_MUSIC
+		VALUES(?,?)
+	</entry>
+	
+	<entry key="deleteMusicLike">
+		DELETE FROM LIKE_MUSIC
+		WHERE USER_NO = ? AND MUSIC_NO = ?
+	</entry>
+	
+</properties>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="searchMusic">
+		SELECT ROWNUM, ALBUM_CHANGENAME, MUSIC_TITLE, ALBUM_TITLE, ARTIST_NAME, MUSIC_NO
+		FROM (
+		    SELECT *
+		    FROM MUSIC
+		    JOIN ALBUM USING (ALBUM_NO)
+		    JOIN ARTIST USING (ARTIST_NO)
+		    WHERE MUSIC_TITLE LIKE ? OR UPPER(ARTIST_NAME) LIKE ?
+		    ORDER BY ALBUM_DATE DESC )
+	</entry>
+	<entry key="searchAlbum">		
+		SELECT DISTINCT ALBUM_NO, ALBUM_TITLE, ARTIST_NAME, ALBUM_DATE, MUSIC_GENRE, ALBUM_CHANGENAME
+		FROM ALBUM
+		JOIN ARTIST USING(ARTIST_NO)
+		JOIN MUSIC USING(ALBUM_NO)
+		WHERE ALBUM_NO = ANY (SELECT DISTINCT ALBUM_NO
+		                    FROM ALBUM
+		                    JOIN ARTIST USING(ARTIST_NO)
+		                    WHERE UPPER(ALBUM_TITLE) LIKE ? OR UPPER(ARTIST_NAME) LIKE ?
+		                )
+		ORDER BY ALBUM_DATE DESC
+	</entry>
+	<entry key="albumCount">
+		SELECT COUNT(*) C
+		FROM MUSIC
+		WHERE ALBUM_NO = ?
+	</entry>
+	<entry key="searchArtist">
+		SELECT DISTINCT ARTIST_NAME, ARTIST_NO 
+		FROM ARTIST
+		JOIN ALBUM USING (ARTIST_NO)
+		WHERE UPPER(ARTIST_NAME) LIKE ?
+	</entry>
+	<entry key="recentAlbumPic">
+		SELECT ALBUM_CHANGENAME
+        FROM ALBUM
+        JOIN ARTIST USING(ARTIST_NO)
+        WHERE ARTIST_NAME = ? AND ALBUM_DATE = (SELECT MAX(ALBUM_DATE)
+										        FROM ALBUM
+										        JOIN ARTIST USING(ARTIST_NO)
+										        WHERE ARTIST_NAME = ? )
+	</entry>
+</properties>

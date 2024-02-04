@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<!-- 동연 시작 -->
+	<entry key="loginAdmin">
+    	SELECT * FROM ADMIN WHERE ADMIN_ID = ? AND ADMIN_PWD = ?
+	</entry>
+   
+	<entry key="updateMemo">
+		UPDATE ADMIN
+		SET ADMIN_MEMO=?
+		WHERE ADMIN_NO=?
+	</entry>
+	
+	<entry key="selectNoAnswerQnaCount">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE QNA_RESULT='N'
+	</entry>
+	
+	<entry key="selectNoAnswerQnaList">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, A.*
+			  FROM (SELECT QNA_NO, CATEGORY_NAME, USER_ID, QNA_CONTENT
+			  		FROM QNA Q
+			  		JOIN CATEGORY C ON (QNA_CATEGORY=CATEGORY_NO)
+			  		JOIN DEBUG_USER U ON (QNA_USER_NO=USER_NO)
+			  		WHERE QNA_RESULT='N'
+			  		ORDER BY QNA_NO DESC
+			  		) A
+			  )
+		WHERE RNUM BETWEEN ? AND ?	  
+	</entry>
+	
+	<entry key="selectAllQnaCount">
+		SELECT COUNT(*)
+		FROM QNA
+	</entry>
+	
+	<entry key="selectAllQnaList">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, A.*
+			  FROM (SELECT QNA_NO, CATEGORY_NAME, USER_ID, QNA_CONTENT, QNA_RESULT
+			  		FROM QNA Q
+			  		JOIN CATEGORY C ON (QNA_CATEGORY=CATEGORY_NO)
+			  		JOIN DEBUG_USER U ON (QNA_USER_NO=USER_NO)
+			  		ORDER BY QNA_NO DESC
+			  		) A
+			  )
+		WHERE RNUM BETWEEN ? AND ?	  
+	</entry>
+	
+	<entry key="selectAllFaqCount">
+		SELECT COUNT(*)
+		FROM FAQ
+	</entry>
+	
+	<entry key="selectAllFaqList">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, A.*
+			  FROM (SELECT FAQ_NO, FAQ_TITLE, SUBSTR(FAQ_CONTENT,1,25), CATEGORY_NAME
+			  		FROM FAQ
+			  		JOIN CATEGORY ON (FAQ_CATEGORY=CATEGORY_NO)
+			  		ORDER BY FAQ_NO DESC
+			  		) A
+			  )
+		WHERE RNUM BETWEEN ? AND ?	  
+	</entry>
+	
+	<entry key="insertFaq">
+		INSERT INTO FAQ (FAQ_NO, FAQ_TITLE, FAQ_CONTENT, FAQ_CATEGORY)
+		VALUES(SEQ_FAQ.NEXTVAL, ?, ?, ?)
+	</entry>
+	
+	<entry key="deleteFaq">
+		DELETE FROM FAQ
+		WHERE FAQ_NO IN (%)
+	</entry>
+	
+	<entry key="getArtistNoByName">
+		SELECT ARTIST_NO
+		FROM ARTIST
+		WHERE ARTIST_NAME=?
+	</entry>
+	
+	<entry key="insertAlbum">
+		INSERT INTO ALBUM(ALBUM_NO, ALBUM_TITLE, ALBUM_TYPE, ALBUM_DATE, ARTIST_NO)
+		VALUES (SEQ_ALBUM.NEXTVAL, ?, ?, TO_DATE(?), ?)
+	</entry>
+   
+   <entry key="insertPicAlbum">
+   		INSERT INTO ALBUM(ALBUM_NO, ALBUM_TITLE, ALBUM_PIC, ALBUM_TYPE, ALBUM_DATE, ARTIST_NO, ALBUM_CHANGENAME, ALBUM_PIC_PATH)
+   		VALUES (SEQ_ALBUM.NEXTVAL, ?, ?, ?, TO_DATE(?), ?, ?, ?)
+   </entry>
+   
+   <entry key="insertArtist">
+   		INSERT INTO ARTIST (ARTIST_NO, ARTIST_NAME)
+   		VALUES (SEQ_ARTIST.NEXTVAL, ?)
+   </entry>
+   
+   <entry key="selectAllArtist">
+   		SELECT ARTIST_NO, ARTIST_NAME
+   		FROM ARTIST
+   </entry>
+   
+   <entry key="selectAlbumNo">
+   		SELECT ALBUM_NO
+   		FROM ALBUM
+   		WHERE ALBUM_TITLE=?
+   </entry>
+   
+   <entry key="insertMusic">
+   		INSERT INTO MUSIC(MUSIC_NO, ALBUM_NO, MUSIC_DETAIL, MUSIC_GENRE, MUSIC_TIME, MUSIC_LYRICS, MUSIC_FILE, MUSIC_TITLE, MUSIC_CHANGENAME, MUSIC_PATH)
+   		VALUES (SEQ_MUSIC.NEXTVAL,?,?,?,?,?,?,?,?,?)
+   </entry>
+   
+   <entry key="insertKeyword">
+   		INSERT INTO KEYWORD(KEYWORD_NO, KEYWORD_NAME)
+   		VALUES (SEQ_KEYWORD.NEXTVAL, ?)
+   </entry>
+   
+   <entry key="selectKeywordNo">
+   		SELECT KEYWORD_NO
+   		FROM KEYWORD
+   		WHERE KEYWORD_NAME=?
+   </entry>
+   
+   <entry key="insertMusicKeywordTable">
+   		INSERT INTO MUSIC_KEYWORD (MUSIC_NO, KEYWORD_NO)
+   		VALUES (SEQ_MUSIC.CURRVAL, ?)
+   </entry>
+   
+   <entry key="selectAllMusicCount">
+   		SELECT COUNT(*)
+   		FROM MUSIC
+   </entry>
+   
+   <entry key="selectAllMusicList">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, A.*
+			  FROM (SELECT M.MUSIC_NO, ALBUM_TITLE, MUSIC_TITLE, ARTIST_NAME, MUSIC_GENRE, NVL(( 
+                                      SELECT  LISTAGG(KEYWORD_NAME, ',') WITHIN GROUP(ORDER BY KEYWORD_NAME) 
+                                      FROM KEYWORD K
+                                      JOIN MUSIC_KEYWORD MK ON MK.KEYWORD_NO = K.KEYWORD_NO
+                                      WHERE M.MUSIC_NO = MK.MUSIC_NO ),'-') KEYWORD_NAME
+			  		FROM MUSIC M
+			  		JOIN ALBUM AL ON (M.ALBUM_NO=AL.ALBUM_NO)
+		            JOIN ARTIST AR ON (AL.ARTIST_NO=AR.ARTIST_NO)
+			  		ORDER BY M.MUSIC_NO DESC
+			  		) A
+			  )
+		WHERE RNUM BETWEEN ? AND ?
+   </entry>
+   
+   <entry key="loadMusicInfo">
+ 		SELECT MUSIC_NO, ALBUM_TITLE, MUSIC_TITLE, ARTIST_NAME, MUSIC_GENRE, KEYWORD_NAME
+  		FROM MUSIC M
+  		JOIN ALBUM AL USING (ALBUM_NO)
+           JOIN ARTIST AR USING (ARTIST_NO)
+           JOIN MUSIC_KEYWORD MK USING (MUSIC_NO)
+           JOIN KEYWORD K USING(KEYWORD_NO)
+        WHERE MUSIC_NO = ?
+  		ORDER BY MUSIC_NO DESC
+   </entry>
+   
+   <entry key="selectAllAlbum">
+   		SELECT TO_CHAR(ALBUM_DATE , 'YYYY-MM-DD') ALBUM_DATE, A.* 
+   		FROM ALBUM A
+   		WHERE ALBUM_NO=?
+   </entry>
+   
+   <entry key="selectAllMusic">
+   		SELECT *
+   		FROM MUSIC
+   		WHERE MUSIC_NO=?
+   </entry>
+   
+   <entry key="selectArtistByNo">
+   		SELECT *
+   		FROM ARTIST
+   		WHERE ARTIST_NO=?
+   </entry>
+   
+   <entry key="selectAllMusicKeyword">
+   		SELECT *
+   		FROM MUSIC_KEYWORD
+   		WHERE MUSIC_NO=?
+   </entry>
+   
+   <entry key="selectAllKeyword">
+   		SELECT *
+   		FROM KEYWORD
+   		WHERE KEYWORD_NO=?
+   </entry>
+   
+   <entry key="updateAlbum">
+   		UPDATE ALBUM
+   		SET ALBUM_TITLE=?,
+   			ALBUM_PIC=?,
+   			ALBUM_TYPE=?,
+   			ALBUM_DATE=?,
+   			ARTIST_NO=?,
+   			ALBUM_CHANGENAME=?,
+   			ALBUM_PIC_PATH=?
+   		WHERE ALBUM_NO=?	
+   </entry>
+   
+   <entry key="insertNewMusicKeywordTable">
+   		INSERT INTO MUSIC_KEYWORD (MUSIC_NO, KEYWORD_NO)
+   		VALUES (?, ?)
+   </entry>
+   
+   <entry key="updateMusic">
+   		UPDATE MUSIC
+   		SET MUSIC_DETAIL=?,
+   			MUSIC_GENRE=?,
+   			MUSIC_TIME=?,
+   			MUSIC_LYRICS=?,
+   			MUSIC_FILE=?,
+   			MUSIC_TITLE=?,
+   			MUSIC_CHANGENAME=?,
+   			MUSIC_PATH=?
+   		WHERE ALBUM_NO=? AND MUSIC_NO=?	
+   </entry>
+   	   
+   <entry key="selectAllReplyCount">
+   		SELECT COUNT(*)
+   		FROM REPLY
+   </entry>
+   
+   <entry key="selectAllReplyList">
+   		SELECT *
+		FROM (SELECT ROWNUM RNUM, A.*
+			  FROM (SELECT REPLY_NO, ALBUM_TITLE, ARTIST_NAME, SUBSTR(REPLY_CONTENT,1,33)
+			  		FROM REPLY
+			  		JOIN ALBUM USING(ALBUM_NO)
+			  		JOIN ARTIST USING (ARTIST_NO)
+			  		ORDER BY REPLY_NO DESC
+			  		) A
+			  )
+		WHERE RNUM BETWEEN ? AND ?	
+   </entry>
+   
+   <entry key="deleteReply">
+   		DELETE FROM REPLY
+		WHERE REPLY_NO = ?
+   </entry>
+   
+   <entry key="deleteMusicKeyword">
+   		DELETE FROM MUSIC_KEYWORD
+		WHERE MUSIC_NO=?
+   </entry>
+   
+   <entry key="deleteMusic">
+   		DELETE FROM MUSIC
+		WHERE MUSIC_NO=?   
+   </entry>
+   
+   <entry key="selectQnaInfo">
+   		SELECT QNA_NO, CATEGORY_NAME, QNA_CONTENT
+   		FROM QNA
+   		JOIN CATEGORY ON (QNA_CATEGORY=CATEGORY_NO)
+   		WHERE QNA_NO=?
+   </entry>
+   
+   <entry key="updateQna">
+   		UPDATE QNA 
+   		SET QNA_ANSWER=?, QNA_RESULT='Y'
+   		WHERE QNA_NO=?
+   </entry>
+   
+   <entry key="deleteQna">
+   		DELETE FROM QNA
+		WHERE QNA_NO = ?
+   </entry>
+      
+   <entry key="searchMusicList">
+   		SELECT *
+		FROM (SELECT ROWNUM RNUM, A.*
+			  FROM (SELECT M.MUSIC_NO, ALBUM_TITLE, MUSIC_TITLE, ARTIST_NAME, MUSIC_GENRE, NVL(( 
+                                      SELECT  LISTAGG(KEYWORD_NAME, ',') WITHIN GROUP(ORDER BY KEYWORD_NAME) 
+                                      FROM KEYWORD K
+                                      JOIN MUSIC_KEYWORD MK ON MK.KEYWORD_NO = K.KEYWORD_NO
+                                      WHERE M.MUSIC_NO = MK.MUSIC_NO),'-') KEYWORD_NAME
+			  		FROM MUSIC M
+			  		JOIN ALBUM AL ON (M.ALBUM_NO=AL.ALBUM_NO)
+		            JOIN ARTIST AR ON (AL.ARTIST_NO=AR.ARTIST_NO)
+		            WHERE MUSIC_TITLE LIKE '%' || ? || '%'
+			  		ORDER BY M.MUSIC_NO DESC
+			  		) A
+			  )
+		WHERE RNUM BETWEEN ? AND ?
+   </entry>
+   
+   <entry key="searchMusicCount">
+   		SELECT COUNT(*)
+		FROM MUSIC
+		WHERE MUSIC_TITLE LIKE '%' || ? || '%'
+   </entry>
+   
+   <entry key="selectAlbum">
+   		SELECT ALBUM_NO, ALBUM_TITLE
+   		FROM ALBUM
+   </entry>
+   <entry key="selectQnaImg">
+   		SELECT QNA_FILE_PATH || '/' ||QNA_IMAGE_CHANGE "QNA_IMAGE"
+   		FROM QNA
+   		WHERE QNA_NO=?
+   </entry>
+   
+ <!--   <entry key="selectQnaImg">
+   		SELECT QNA_IMAGE_CHANGE "QNA_IMAGE"
+   		FROM QNA
+   		WHERE QNA_NO=?
+   </entry> -->
+<!-- 동연 끝 -->
+
+<!-- 동현 시작-->
+	<entry key="insertAdmin">
+		INSERT INTO ADMIN(
+			ADMIN_NO,
+			ADMIN_GRADE,
+			ADMIN_NAME,
+			ADMIN_ID,
+			ADMIN_PWD,
+			ADMIN_PHONE,
+			ADMIN_MEMO
+		)
+		VALUES (
+			SEQ_ADMIN.NEXTVAL,
+			DEFAULT,
+			?,
+			?,
+			?,
+			?,
+			NULL
+		)
+	</entry>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*) 
+		FROM ADMIN
+		WHERE ADMIN_GRADE = 2
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, A.*
+			FROM (
+				SELECT ADMIN_NO, ADMIN_NAME, ADMIN_ID, ADMIN_PWD, ADMIN_PHONE
+				FROM ADMIN
+				WHERE ADMIN_GRADE = 2
+				ORDER BY ADMIN_NO ASC
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="deleteAdmin">
+		DELETE FROM ADMIN
+		WHERE ADMIN_NO = ? 
+	</entry>
+	
+	<entry key="insertNotice">
+		INSERT INTO NOTICE (
+			NOTICE_NO,
+			NOTICE_TITLE,
+			NOTICE_CONTENT,
+			NOTICE_CATEGORY
+		)
+		VALUES (
+			SEQ_NOTICE.NEXTVAL,
+			?,
+			?,
+			?
+		)
+	</entry>
+	
+	<entry key="selectNoticeListCount">
+		SELECT COUNT(*) 
+		FROM NOTICE
+	</entry>
+	
+	<entry key="selectNoticeList">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, A.*
+			FROM (
+				SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENT, CATEGORY_NAME
+				FROM NOTICE
+				JOIN CATEGORY ON (NOTICE_CATEGORY = CATEGORY_NO)
+				ORDER BY NOTICE_NO ASC
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="deleteNotice">
+		DELETE FROM NOTICE
+		WHERE NOTICE_NO = ?
+	</entry>
+	
+	<entry key="selectTicketList">
+	SELECT ROWNUM RNUM, A.*
+	FROM (
+		SELECT TICKET_NO, TICKET_NAME, TICKET_PRICE, TICKET_PER
+		FROM TICKET
+		ORDER BY TICKET_NO ASC
+	) A
+	</entry>
+	
+	<entry key="insertTicket">
+		INSERT INTO TICKET (
+			TICKET_NO,
+			TICKET_PER,
+			TICKET_NAME,
+			TICKET_PRICE,
+			TICKET_LOOP_PLAY,
+			TICKET_OFFLINE_PLAY
+		)
+		VALUES (
+			SEQ_TICKET.NEXTVAL,
+			?,
+			?,
+			?,
+			?,
+			?
+		)
+	</entry>
+	
+	<entry key="deleteTicket">
+		DELETE FROM TICKET
+		WHERE TICKET_NO = ?
+	</entry>
+	
+	<entry key="selectDebugUserListCount">
+		SELECT COUNT(*) 
+		FROM DEBUG_USER
+	</entry>
+	
+	<entry key="selectSearchDebugUserListCount">
+		SELECT COUNT(*)
+		FROM DEBUG_USER
+		WHERE USER_NAME LIKE '%' || ? || '%'
+	</entry>
+	
+	<entry key="selectDebugUserList">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, A.*
+			FROM (
+				SELECT USER_NO, USER_NAME, USER_ID, USER_PWD, USER_PHONE, USER_EMAIL, USER_SSN, TICKET_NAME
+				FROM DEBUG_USER
+				LEFT JOIN TICKET USING (TICKET_NO)
+				WHERE USER_STATUS = 'N'
+				ORDER BY USER_NO ASC
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="deleteUser">
+		DELETE FROM DEBUG_USER
+		WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="selectUser">
+		SELECT USER_NAME, USER_ID, USER_PWD, USER_PHONE, USER_SSN, USER_EMAIL, TICKET_NAME, TICKET_DATE
+		FROM DEBUG_USER
+		LEFT JOIN TICKET USING (TICKET_NO)
+		WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="updateUser">
+		UPDATE DEBUG_USER
+		SET USER_NAME = ?,
+			USER_ID = ?,
+			USER_PHONE = ?,
+			USER_EMAIL = ?,
+			USER_SSN = ?,
+			TICKET_NO = ?
+		WHERE USER_NO = ?
+	</entry>
+	
+	<entry key="selectBlacklistListCount">
+		SELECT COUNT(*) 
+		FROM BLACKLIST
+	</entry>
+	
+	<entry key="selectBlacklistList">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, A.*
+			FROM (
+				SELECT BLACKLIST_NO, BLACKLIST_NAME, BLACKLIST_USER_NO, BLACKLIST_REASON, BLACKLIST_STATUS, TO_CHAR(BLACKLIST_DATE , 'YYYY-MM-DD') BLACKLIST_DATE
+				FROM BLACKLIST
+				ORDER BY BLACKLIST_NO ASC
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="insertBlacklist">
+		INSERT INTO BLACKLIST(
+			BLACKLIST_NO,
+			BLACKLIST_REASON,
+			BLACKLIST_STATUS,
+			BLACKLIST_DATE,
+			BLACKLIST_NAME,
+			BLACKLIST_USER_NO
+		)
+		VALUES (
+			SEQ_BLACKLIST.NEXTVAL,
+			?,
+			DEFAULT,
+			TO_DATE(?, 'yyyy-mm-dd'),
+			?,
+			?
+		)
+	</entry>
+	
+	<entry key="updateUserStatus">
+		UPDATE DEBUG_USER
+		SET USER_STATUS = 'Y'
+		WHERE USER_ID = ?
+	</entry>
+	
+	<entry key="deleteBlacklist">
+		DELETE FROM BLACKLIST
+		WHERE BLACKLIST_NO = ?
+	</entry>
+	
+	<entry key="updateBlacklist">
+		UPDATE DEBUG_USER
+		SET USER_STATUS = 'N'
+		WHERE USER_ID = (
+    		SELECT BLACKLIST_USER_NO
+    		FROM BLACKLIST
+    		WHERE BLACKLIST_NO = ?
+		)
+	</entry>
+	
+	<entry key="selectCategoryList">
+		SELECT CATEGORY_NO, CATEGORY_NAME
+		FROM CATEGORY
+	</entry>
+	
+	<entry key="selectTicket">
+		SELECT ROWNUM RNUM, A.*
+		FROM (
+			SELECT TICKET_NO, TICKET_NAME
+			FROM TICKET
+			ORDER BY TICKET_NO ASC
+		) A
+	</entry>
+
+	<entry key="searchUser">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, A.*
+			FROM (
+				SELECT USER_NO, USER_NAME, USER_ID, USER_PWD, USER_PHONE, USER_EMAIL, USER_SSN, TICKET_NO
+				FROM DEBUG_USER
+				LEFT JOIN TICKET USING (TICKET_NO)
+				WHERE USER_NAME LIKE '%' || ? || '%'
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="searchBlacklist">
+		SELECT *
+		FROM (
+			SELECT ROWNUM RNUM, A.*
+			FROM (
+				SELECT BLACKLIST_NO, BLACKLIST_NAME, BLACKLIST_USER_NO, BLACKLIST_REASON, BLACKLIST_STATUS, TO_CHAR(BLACKLIST_DATE , 'YYYY-MM-DD') BLACKLIST_DATE
+				FROM BLACKLIST
+				WHERE BLACKLIST_NAME = ?
+			) A
+		)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+<!-- 동현 끝 -->
+	
+</properties>   

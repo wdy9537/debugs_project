@@ -1,0 +1,138 @@
+@charset "UTF-8";
+.outerbox {
+            width: 1000px;
+            margin: auto;
+            margin-top: 50px;
+            transform: translate(-102px);
+        }
+
+        /* 메인 글씨 */
+        #noticemaintext {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+            transform: translate(120px);
+        }
+
+        /* c/s 종류 버튼 */
+        .wholenoticemenu {
+            display: flex;
+            justify-content: center;
+            margin-left: 200px;
+            margin-bottom: 30px;
+
+
+        }
+
+
+        .noticemenu {
+            height: 50px;
+            width: 190px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 19px;
+            border-radius: 20px;
+            transition: transform 0.1s ease-in-out;
+            margin-bottom: 40px;
+            font-size: 20px;
+            font-weight: 900;
+            margin-top: 35px;
+
+        }
+
+        .noticemenu a {
+            text-decoration: none;
+            color: black;
+
+        }
+
+        .noticemenu a:hover {
+            color: #fa5d82;
+        }
+
+        #noticechoicemenu {
+            background-color: #fa5d82;
+        }
+
+        #noticechoicemenu a {
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        /* c/s 종류 버튼 끝*/
+
+
+
+
+
+
+
+
+
+
+
+
+		#noticetable {
+		
+			transform: translate(150px);
+        }
+		
+        #noticetable thead tr {
+			text-align: center;
+            background-color: #fa5d82;
+            font-size: 17px;
+            color: #f0f0f0;
+            height: 40px;
+
+        }
+		
+
+        #noticetable tr {
+
+            height: 58px;
+            font-weight: 500;
+            font-size: 16px;
+
+
+        }
+
+      
+
+        #noticetable tbody tr:nth-child(even) {
+            background-color: #fff8fa;
+            /* 짝수 행 배경색 */
+
+        }
+
+        #noticetable tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+            /* 홀수 행 배경색 */
+        }
+
+        #noticetable tbody tr td:first-child {
+            border-top-left-radius: 10px;
+            /* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+            border-bottom-left-radius: 10px;
+        }
+
+        #noticetable tbody tr td:last-child {
+            border-top-right-radius: 10px;
+            /* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+            border-bottom-right-radius: 10px;
+        }
+
+        #noticetable thead tr th:first-child {
+            border-top-left-radius: 10px;
+            /* 첫 번째 td의 상단 왼쪽 모서리 반경 설정 */
+            border-bottom-left-radius: 10px;
+        }
+
+        #noticetable thead tr th:last-child {
+            border-top-right-radius: 10px;
+            /* 마지막 td의 상단 오른쪽 모서리 반경 설정 */
+            border-bottom-right-radius: 10px;
+        }
+
+        

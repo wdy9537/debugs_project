@@ -1,0 +1,500 @@
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    
+}
+
+button{
+    background-color: transparent;
+    border:none;
+}
+
+/* 열기 전 미니 플레이어컨트롤러*/
+.player_ct {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.player_ct.mini .playbar_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.player_ct_mini {
+    background-color: #000;
+    opacity:0.9;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index : 200;
+}
+
+.player_ct.mini .track_area{
+    display: flex;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 30%;
+}
+
+.player_ct.mini .playbar_ct {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    max-width: 1920px;
+    height: 80px;
+    padding: 21px 20px 19px;
+}
+/* 재생바 우째ㅠ*/
+ .player_seek_wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    padding-bottom: 4px;
+    }
+    
+    .music__progress {
+    height: 6px;
+    width: 100%;
+    border-radius: 10px;
+    background: #f0f0f0;
+    cursor: pointer;
+}
+
+.music__progress .bar {
+    height: inherit;
+    width: 0%;
+    position: relative;
+    border-radius: inherit;
+}
+
+.player_seek_wrap_action{
+	background:lightblue;
+}
+
+.player_seek_action{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.playbar_ct{
+    display: flex;
+    padding: 5px;
+    width:100%;
+}
+
+.playbar_ct button{
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    color: #fff;
+}
+
+.playbar_wrap{
+    display:flex;
+    height: 70px;
+}
+
+.player_controller{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    align-items: center;
+}
+
+.player_ct_mini .track_area {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    width: 40%;
+}
+
+.player_ct .track_area .thumb {
+    overflow: hidden;
+    background-size: 100% 100%;
+}
+
+.track_area .thumb img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-image: url(https://cdn.music-flo.com/image/album/047/966/04/0…8694.jpg?1597736596611/dims/resize/500/quality/90)
+}
+
+.track_info {
+    max-width: clac(100% -96px);
+    margin-left: 12px;
+}
+
+.track_info .title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+}
+
+.track_info .artist {
+    padding-top: 4px;
+    font-size: 12px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #989898;
+}
+
+.player_ct.mini .player_controller { 
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.controller{
+    /* display: flex;
+    gap: 12px;
+    justify-content: center;
+    width: 260px; */
+    display: -webkit-box;
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.control button{
+    color:#fff;
+}
+
+.icon{
+    vertical-align: middle;
+}
+
+.control_toggle_play{
+    position: relative;
+    width: 44px;
+    height: 44px;
+}
+
+.player_side{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player_side_right{
+    display:flex;
+    justify-content: space-between;
+    /* align-items: center;
+    width:30%; */
+}
+
+.player_time{
+    display:flex;
+    margin-left:24px;
+    font-size:11px;
+    font-weight:400;
+    color:#989898;
+}                                                                             
+
+.player_time_current{
+    color:#fff;
+}
+
+
+
+.slick-prev:before, .slick-next:before{
+    color:black;
+}
+
+
+
+/* 플레이어 전체화면 설정 */
+
+        .full_player {
+            position: fixed;
+            top: 50vw;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* background-color: #0f0e0e; */
+            transition: all 1s ease-in-out  ;
+            z-index : 100;
+        }
+        
+        
+        .full_player_inner{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+        .full_player_bg{
+            height: 100%;
+            background-color: black;
+            opacity: 0.92;
+        }
+        .player_header{
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 30px 55px 20px;
+        }
+
+        /* 왼쪽 */
+        .full_player_player{
+            width: 100%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin-top:2%;
+        }
+
+        .full_player_content{
+            display: flex;
+        }
+
+        .content_box{
+            display: flex;
+            position: relative;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+            width: 500px;
+            min-height: 460px;
+            text-align: center;
+        }
+
+        .content_title{
+            width:100%;
+            margin-bottom: 8px;
+            font-size:22px;
+            font-weight: 600;
+            color:white;
+        }
+
+        .content_box .artist_name{
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            max-width:500px;
+            margin-bottom:20px;
+            font-size:14px;
+            font-weight:400;
+          
+        }
+
+        .artist_name_link{
+            cursor:pointer;
+           	color:#989898;
+
+        }
+        
+        /* 반응형으로 사이즈 조절ㄹ? */
+        .content_thumbnail img{
+            position:relative;
+            width: 360px;
+            height: 360px;
+            margin-bottom:25px;
+            border-radius:10px;
+            outline:none;
+            
+        }
+
+        /* 오른쪽? */
+
+        .music_item_content{
+            display: flex;
+            margin: 10px;
+        }
+
+        .music_item_text{
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            margin-left: 5%;
+            width: 100%;
+        }
+
+        .music_item_text_title{
+            color: white;
+        }
+
+        .music_item_text_artist{
+            color: #989898;
+            font-size: 13px;
+            margin-left:10px;
+        }
+
+        .music_item_text_playtime{
+            font-size: 17px;
+            display: flex;
+            justify-content: end;
+            width: 50%;
+        }
+        
+        .full_player_playlist{
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            flex-direction: column;
+             width:100%;
+        }
+
+        .playlist_tab{
+            position:relative;
+        }
+
+        .playlist_tab_inner{
+            margin-right: 10px;
+            border-bottom: 1px solid hsla(0,0%,94%,.2);
+        }
+
+        .playlist_tab_list{
+            display:flex;
+            text-align:center;
+        }
+
+        .playlist_tab_list button{
+            /* color:white; */
+            /* border-bottom: 3px solid #989898; */
+            color:#989898;
+            padding-bottom:10px;
+            margin-right:15px;
+            font-size:15px;
+            font-weight: 500;
+            border:none;
+            background-color: transparent;
+
+        }
+
+        /*기능 구현 후 지울거임 보여주기 */
+        /* .playlist_tab_list .playlist_tab_1{
+            color:white;
+            border-bottom: 3px solid #989898;
+            font-size:20px;
+            font-weight:700;
+        } */
+        
+            .music__list .list {
+        color: var(--lightblack);
+        height: 35vw;
+    overflow-y: scroll;
+    }
+    .music__list .list > ul {
+        margin: 10px 0;
+        overflow: auto;
+    }
+    
+    .list ul{
+	color:white;
+	list-style:none;
+	}
+	
+    .music__list .list > ul::-webkit-scrollbar {
+        width: 0;
+    }
+    .music__list .list > ul > li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+    .music__list .list > ul > li.playing {
+        color: blue;
+    }
+    .music__list .list > ul > li > div em {
+        font-style: normal;
+    }
+    .music__list .list > ul > li > div p {
+        opacity: 0.8;
+    }
+        
+        
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+        
+        .playlist_tab_list .on{
+            color: white;
+            border-bottom: 3px solid #989898;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+
+
+        .music_item_content a{
+            width: 13%;
+        }
+
+
+        .simplebar img{
+            width: 100%;
+            height: auto;
+        }
+
+		
+		.playerlist_tab .title{
+			overflow-x: scroll;
+		    width: 800px;
+		     -ms-overflow-style: none; /* 인터넷 익스플로러 */
+		  scrollbar-width: none; /* 파이어폭스 */
+		}
+		.playlist_tab_list{
+			width:fit-content;
+		}
+		.playlist_tab_list li {
+		
+			text-overflow: ellipsis;
+		    white-space: nowrap;
+		    overflow: hidden;
+			width:135px;
+		}
+		.playerlist_tab .title::-webkit-scrollbar {
+		  display: none;
+		}
+		ul{
+			list-style-type:none;
+		}
+
+        /* 플레이어 전체화면 css 끝 ! */

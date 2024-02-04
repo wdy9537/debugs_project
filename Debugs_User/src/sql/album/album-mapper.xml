@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="selectAlbumList">
+	 SELECT *
+	FROM ALBUM 
+	WHERE ALBUM_NO = ?
+</entry>
+
+<entry key="selectReplyList">
+		SELECT 
+			U.USER_NAME,
+			R.*
+		FROM REPLY R
+		LEFT JOIN DEBUG_USER U ON (R.USER_NO=U.USER_NO)
+		LEFT JOIN ALBUM A ON (R.ALBUM_NO = A.ALBUM_NO)
+		WHERE A.ALBUM_NO = ?
+		ORDER BY R.REPLY_NO DESC
+</entry>
+<entry key="selectMusicList">
+		SELECT M.*
+		FROM MUSIC M
+		LEFT JOIN ALBUM A ON (M.ALBUM_NO = A.ALBUM_NO)
+		WHERE M.ALBUM_NO = ?
+</entry>
+<entry key="selectArtistList">
+		SELECT AR.ARTIST_NO, AR.ARTIST_NAME
+		FROM ARTIST AR
+		LEFT JOIN ALBUM A ON (AR.ARTIST_NO = A.ARTIST_NO)
+		WHERE A.ALBUM_NO = ?
+		
+</entry>
+
+
+
+<entry key="insertComment">
+	INSERT INTO REPLY(
+		REPLY_NO,
+		REPLY_CONTENT,
+		ALBUM_NO,
+		USER_NO
+	)
+	VALUES(
+	SEQ_REPLY.NEXTVAL,
+	?,
+	?,
+	2
+	)
+</entry>
+
+<entry key="selectMusicCount">
+	SELECT MUSIC_NO
+	FROM MUSIC
+	WHERE ALBUM_NO = ?
+</entry>
+
+<entry key="selectCommentList">
+	SELECT REPLY_NO, REPLY_CONTENT, USER_NAME, ALBUM_NO
+    FROM REPLY
+    JOIN DEBUG_USER USING(USER_NO)
+    WHERE ALBUM_NO = ?
+    ORDER BY REPLY_NO DESC
+</entry>
+
+</properties>

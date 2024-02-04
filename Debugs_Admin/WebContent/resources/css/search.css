@@ -1,0 +1,106 @@
+/* 뮤직리스트 css */
+.music_list>table {
+    width: 100%;
+    text-align:center;
+    font-size: 15px;
+    border-collapse: collapse;
+}
+.music_list td {
+    height: 60px;
+    border-bottom: 1px solid #ccc;
+    padding: 12px 0;
+}
+.music_list th {
+    color: gray;
+    height: 40px;
+    border-bottom: 1px solid #777;
+    border-top: 1px solid #777;
+    padding: 4px 0;
+}
+.music_title{
+    font-size: 18px;
+    margin-left: 20px;
+}
+.album_title{
+    font-size: 14px;
+    margin-left: 20px;
+    color: #777
+}
+.album_pic, .artist_name{ cursor:pointer;}
+
+.table_left { text-align: left }
+.music_list_icon>img {width:20px; height:20px; cursor: pointer;}
+
+
+/* 앨범 검색 결과 */
+.album_list {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.album_list>div {
+    width: 33%;
+    display: flex;
+    justify-content: left;
+}
+.album_cover {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+}
+.album_cover img {
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+}
+.album_content{
+    width: 50%;
+    position: relative;
+}
+.album_content>div{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+.album_content>div>div{
+    float: left;
+    margin-right: 15px;
+    height: 30px;
+}
+
+/* 가수 검색 결과 */
+.artist_list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.artist_list>div {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    position: relative;
+}
+.artist_list>div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10em;
+}
+
+.artist_list .play {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border: 5px solid black;
+    border-radius: 3em;
+    width: 70px;
+    height: 70px;
+    background: url('../img/musiclist/play_button2.png') no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+
+
+
+
