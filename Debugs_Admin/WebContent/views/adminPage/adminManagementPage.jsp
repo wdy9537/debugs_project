@@ -25,8 +25,6 @@
 		
 		if(msg != "null") {
 			alert(msg);
-			// 알림창을 띄워준 후 session에 담긴 해당 메세지는 지워줘야한다.
-			// 안그러면 menubar.jsp가 로딩될때마다 항상 메세지가 뜰 것이다.
 			<% session.removeAttribute("alertMsg"); %>
 		}
 	</script>
@@ -179,7 +177,7 @@
         });
 
         function onOff(){   
-            // 전체선택이 체크되었을때는 '모든' 카테고리 체크박스가 체크된 상태일때만 가능하다.
+            // 전체선택이 체크되었을때는 '모든' 카테고리 체크박스가 체크된 상태일때만 가능
             // 선택된 체크박스의 길이 == 전체 체크박스의 길이 ==> true일시 전체선택버튼에 불이 들어오게 작업
             const checkedLength = document.querySelectorAll("input[name=check-btn]:checked").length;
 
