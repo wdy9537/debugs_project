@@ -53,14 +53,11 @@ public class InsertAlbumController extends HttpServlet {
 		if (ServletFileUpload.isMultipartContent(request)) {
 			int maxSize = 10 * 1024 * 1024;
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/img/album_pic");
-//			String savePath = "Z:/img/album_pic/";
-			// 일단은 현재 아래의 리소스에 넣어놓고 마운트 해보자
 
 			MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF-8",
 					new MyFileRenamePolicy());
 
 			String albumTitle = multi.getParameter("albumTitle");
-//			String albumPic = multi.getParameter("albumPic"); // 원본명임
 			String albumType = multi.getParameter("albumType");
 			String albumDate = (multi.getParameter("albumDate")).replaceAll("-", "");
 			String artistName = multi.getParameter("artistName");
